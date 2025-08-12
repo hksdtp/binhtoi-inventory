@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .stats { display: flex; gap: 20px; margin: 20px 0; }
+        .stat { padding: 15px; border: 1px solid #ccc; border-radius: 8px; text-align: center; min-width: 100px; }
+        .categories { display: flex; gap: 10px; margin: 20px 0; }
+        .btn { padding: 10px 15px; border: 1px solid #ccc; border-radius: 20px; cursor: pointer; background: white; }
+        .btn.active { background: #007bff; color: white; }
+        .number { font-size: 24px; font-weight: bold; color: #007bff; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Simple Test - Thống Kê Theo Danh Mục</h1>
+    
+    <div class="categories">
+        <button class="btn active" onclick="showStats('')">Tất cả</button>
+        <button class="btn" onclick="showStats('Bình để nến')">Bình để nến</button>
+        <button class="btn" onclick="showStats('Bình xông đốt tinh dầu')">Bình xông đốt tinh dầu</button>
+        <button class="btn" onclick="showStats('Cốc nến thơm')">Cốc nến thơm</button>
+    </div>
+    
+    <div class="stats">
+        <div class="stat">
+            <div class="number" id="count">0</div>
+            <div>Tổng SP</div>
+        </div>
+        <div class="stat">
+            <div class="number" id="stock">0</div>
+            <div>Tổng tồn</div>
+        </div>
+        <div class="stat">
+            <div class="number" id="low">0</div>
+            <div>Sắp hết</div>
+        </div>
+    </div>
+    
+    <div id="info" style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-top: 20px;"></div>
+    
+    <script>
+        let allProducts = [];
+        
+        // Load data
+        fetch('products_data.json')
+            .then(response => response.json())
+            .then(data => {
+                allProducts = data;
+                showStats(''); // Show all by default
+                document.getElementById('info').innerHTML = `✅ Loaded ${data.length} products successfully`;
+            })
+            .catch(error => {
+                document.getElementById('info').innerHTML = `❌ Error: ${error}`;
+            });
+        
+        function showStats(category) {
+            // Update active button
+            document.querySelectorAll('.btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter products
+            let filtered = allProducts;
+            if (category) {
+                filtered = allProducts.filter(p => p.category === category);
+            }
+            
+            // Calculate stats
+            const count = filtered.length;
+            const stock = filtered.reduce((sum, p) => sum + p.stock, 0);
+            const low = filtered.filter(p => p.stock <= 10).length;
+            
+            // Update display
+            document.getElementById('count').textContent = count;
+            document.getElementById('stock').textContent = stock;
+            document.getElementById('low').textContent = low;
+            
+            // Show info
+            const categoryName = category || 'Tất cả';
+            document.getElementById('info').innerHTML = `
+                <strong>Danh mục: ${categoryName}</strong><br>
+                Sản phẩm: ${count}<br>
+                Tổng tồn: ${stock}<br>
+                Sắp hết: ${low}<br><br>
+                <em>Kết quả mong đợi:</em><br>
+                - Tất cả: 32 SP, 2602 tồn, 0 sắp hết<br>
+                - Bình để nến: 9 SP, 726 tồn, 0 sắp hết<br>
+                - Bình xông đốt tinh dầu: 18 SP, 1425 tồn, 0 sắp hết<br>
+                - Cốc nến thơm: 5 SP, 451 tồn, 0 sắp hết
+            `;
+        }
+    </script>
+</body>
+</html>

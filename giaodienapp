@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopee Style - Luxury Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --shopee-orange: #4A90A4;
+            --shopee-orange-light: #5BA3B8;
+            --shopee-orange-dark: #3A7A8C;
+            --shopee-bg: #F5F8FA;
+            --shopee-white: #FFFFFF;
+            --shopee-gray: #757575;
+            --shopee-light-gray: #EEEEEE;
+            --shopee-text: #222222;
+        }
+        
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--shopee-bg);
+            padding-bottom: 80px;
+            overflow-x: hidden;
+        }
+        
+        .shopee-gradient {
+            background: linear-gradient(135deg, var(--shopee-orange) 0%, var(--shopee-orange-light) 100%);
+        }
+        
+        .shopee-card {
+            background: var(--shopee-white);
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .shopee-card:active {
+            transform: scale(0.98);
+            box-shadow: 0 2px 8px rgba(238, 77, 45, 0.2);
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+            animation: slideUp 0.4s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .product-card:active {
+            transform: scale(0.98);
+        }
+        
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideInFromBottom {
+            from {
+                opacity: 0;
+                transform: translateY(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .animate-slide-bottom {
+            animation: slideInFromBottom 0.3s ease-out;
+        }
+        
+        .shopee-button {
+            background: var(--shopee-orange);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shopee-button:active {
+            background: var(--shopee-orange-dark);
+            transform: scale(0.98);
+        }
+        
+        .shopee-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+        }
+        
+        .shopee-button:active::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #E0E0E0;
+            z-index: 1000;
+            height: 80px;
+        }
+        
+        .nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-item.active {
+            color: var(--shopee-orange);
+        }
+        
+        .nav-item:active {
+            transform: scale(0.95);
+            background: rgba(238, 77, 45, 0.05);
+        }
+        
+        .search-bar {
+            background: white;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 16px;
+            font-size: 14px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+        
+        .search-bar:focus {
+            outline: none;
+            box-shadow: 0 2px 8px rgba(238, 77, 45, 0.2);
+        }
+        
+        .category-chip {
+            background: white;
+            border: 1px solid #E0E0E0;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 12px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+        
+        .category-chip.active {
+            background: var(--shopee-orange);
+            color: white;
+            border-color: var(--shopee-orange);
+        }
+        
+        .category-chip:active {
+            transform: scale(0.95);
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal-overlay.show {
+            opacity: 1;
+        }
+        
+        .modal-content {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 16px 16px 0 0;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal-content.show {
+            transform: translateY(0);
+        }
+        
+        .price-text {
+            color: var(--shopee-orange);
+            font-weight: 600;
+        }
+        
+        .stock-badge {
+            background: rgba(238, 77, 45, 0.1);
+            color: var(--shopee-orange);
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        
+        .ios-input {
+            background: #F7F7F7;
+            border: 1px solid #E0E0E0;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+        
+        .ios-input:focus {
+            outline: none;
+            border-color: var(--shopee-orange);
+            background: white;
+        }
+        
+        .header-safe-area {
+            padding-top: env(safe-area-inset-top, 20px);
+        }
+        
+        .bottom-safe-area {
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+        }
+    </style>
+</head>
+<body>
+    <!-- iOS Style Header -->
+    <header class="shopee-gradient text-white sticky top-0 z-50 header-safe-area">
+        <div class="px-4 py-4">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="flex-1">
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm..." 
+                           class="search-bar w-full text-gray-700">
+                </div>
+                <button class="p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Category Chips -->
+            <div class="flex gap-2 overflow-x-auto pb-2" style="scrollbar-width: none; -ms-overflow-style: none;">
+                <button class="category-chip active" onclick="filterByCategory('')">Tất cả</button>
+                <button class="category-chip" onclick="filterByCategory('Đèn trang trí')">Đèn trang trí</button>
+                <button class="category-chip" onclick="filterByCategory('Vật dụng decor')">Decor</button>
+                <button class="category-chip" onclick="filterByCategory('Nội thất')">Nội thất</button>
+                <button class="category-chip" onclick="filterByCategory('Phụ kiện')">Phụ kiện</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats Cards -->
+    <div class="px-4 py-4">
+        <div class="grid grid-cols-2 gap-3 mb-4">
+            <div class="shopee-card p-4 text-center">
+                <div class="text-2xl font-bold" style="color: var(--shopee-orange)" id="totalCount">0</div>
+                <div class="text-xs text-gray-500 mt-1">Tổng sản phẩm</div>
+            </div>
+            <div class="shopee-card p-4 text-center">
+                <div class="text-2xl font-bold text-green-500" id="highStock">0</div>
+                <div class="text-xs text-gray-500 mt-1">Còn nhiều hàng</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="px-4">
+        <div id="productsGrid" class="grid grid-cols-2 gap-3">
+            <!-- Products will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav bottom-safe-area">
+        <div class="flex h-full">
+            <div class="nav-item active" onclick="switchTab('home')">
+                <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+                <span class="text-xs">Trang chủ</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('categories')">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+                <span class="text-xs">Danh mục</span>
+            </div>
+            <div class="nav-item" onclick="addNewProduct()">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center mb-1" style="background: var(--shopee-orange)">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                </div>
+                <span class="text-xs">Thêm</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('stats')">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                </svg>
+                <span class="text-xs">Thống kê</span>
+            </div>
+            <div class="nav-item" onclick="switchTab('profile')">
+                <svg class="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                </svg>
+                <span class="text-xs">Tôi</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Modal -->
+    <div id="productModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="p-4 border-b border-gray-200">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-semibold" id="modalTitle">Thêm sản phẩm mới</h3>
+                    <button onclick="closeModal()" class="p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <form id="productForm" class="p-4 space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Tên sản phẩm</label>
+                    <input type="text" id="productName" required class="ios-input w-full">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Danh mục</label>
+                    <select id="productCategory" required class="ios-input w-full">
+                        <option value="">Chọn danh mục</option>
+                        <option value="Đèn trang trí">Đèn trang trí</option>
+                        <option value="Vật dụng decor">Vật dụng decor</option>
+                        <option value="Nội thất">Nội thất</option>
+                        <option value="Phụ kiện">Phụ kiện</option>
+                    </select>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Số lượng</label>
+                        <input type="number" id="productStock" required min="0" class="ios-input w-full">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Giá (VNĐ)</label>
+                        <input type="number" id="productPrice" required min="0" class="ios-input w-full">
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Mô tả</label>
+                    <textarea id="productDescription" rows="3" class="ios-input w-full resize-none"></textarea>
+                </div>
+                
+                <div class="flex gap-3 pt-4">
+                    <button type="button" onclick="closeModal()" class="flex-1 py-3 px-4 bg-gray-200 text-gray-700 rounded-lg font-medium">
+                        Hủy
+                    </button>
+                    <button type="submit" class="flex-1 shopee-button py-3 px-4 rounded-lg font-medium">
+                        Lưu
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let products = [
+            {
+                id: 1,
+                name: "Đèn chùm pha lê Venetian",
+                category: "Đèn trang trí",
+                stock: 75,
+                price: 4500000,
+                description: "Đèn chùm pha lê thủ công với điểm nhấn vàng 24k",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Ccircle cx='100' cy='60' r='6' fill='%234A90A4'/%3E%3Cpath d='M100 66 L85 90 L115 90 Z' fill='%234A90A4'/%3E%3Ccircle cx='92' cy='100' r='8' fill='%235BA3B8' opacity='0.8'/%3E%3Ccircle cx='108' cy='100' r='8' fill='%235BA3B8' opacity='0.8'/%3E%3Ccircle cx='100' cy='115' r='10' fill='%235BA3B8' opacity='0.8'/%3E%3C/svg%3E"
+            },
+            {
+                id: 2,
+                name: "Bình hoa đá cẩm thạch Carrara",
+                category: "Vật dụng decor",
+                stock: 32,
+                price: 2800000,
+                description: "Bình hoa đá cẩm thạch chính hãng từ Italy",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='1'/%3E%3Cpath d='M90 80 L110 80 L108 65 L92 65 Z' fill='%234A90A4'/%3E%3C/svg%3E"
+            },
+            {
+                id: 3,
+                name: "Kệ sách gỗ Mahogany cao cấp",
+                category: "Nội thất",
+                stock: 8,
+                price: 12000000,
+                description: "Kệ sách gỗ Mahogany với phụ kiện đồng thau",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='60' y='50' width='80' height='100' fill='%23A0522D' stroke='%234A90A4' stroke-width='2'/%3E%3Cline x1='65' y1='85' x2='135' y2='85' stroke='%234A90A4' stroke-width='1'/%3E%3Cline x1='65' y1='115' x2='135' y2='115' stroke='%234A90A4' stroke-width='1'/%3E%3Ccircle cx='130' cy='100' r='2' fill='%234A90A4'/%3E%3C/svg%3E"
+            },
+            {
+                id: 4,
+                name: "Gương trang trí Baroque",
+                category: "Phụ kiện",
+                stock: 45,
+                price: 3200000,
+                description: "Gương trang trí phong cách Baroque với khung mạ vàng",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Ccircle cx='100' cy='100' r='40' fill='%234A90A4' stroke='%235BA3B8' stroke-width='2'/%3E%3Ccircle cx='100' cy='100' r='30' fill='%23E0E0E0' opacity='0.9'/%3E%3Cpath d='M80 75 Q100 70 120 75' stroke='%234A90A4' stroke-width='2' fill='none'/%3E%3Cpath d='M80 125 Q100 130 120 125' stroke='%234A90A4' stroke-width='2' fill='none'/%3E%3C/svg%3E"
+            },
+            {
+                id: 5,
+                name: "Tranh sơn dầu Renaissance",
+                category: "Vật dụng decor",
+                stock: 18,
+                price: 1800000,
+                description: "Bản sao tranh Renaissance chất lượng bảo tàng",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='40' y='40' width='120' height='80' fill='%23F5E6D3' stroke='%234A90A4' stroke-width='3'/%3E%3Ccircle cx='80' cy='70' r='6' fill='%23F4C2A1'/%3E%3Cpath d='M72 78 Q80 85 88 78' stroke='%23A0522D' stroke-width='2' fill='none'/%3E%3Cpath d='M40 100 Q80 95 120 100 Q140 98 160 100 L160 120 L40 120 Z' fill='%2365a30d'/%3E%3C/svg%3E"
+            },
+            {
+                id: 6,
+                name: "Đèn bàn Swiss precision",
+                category: "Đèn trang trí",
+                stock: 62,
+                price: 3800000,
+                description: "Đèn bàn kỹ thuật Thụy Sĩ với cơ chế chính xác",
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='170' rx='20' ry='6' fill='%23C0C0C0'/%3E%3Cline x1='100' y1='170' x2='100' y2='120' stroke='%23C0C0C0' stroke-width='4'/%3E%3Cline x1='100' y1='120' x2='120' y2='90' stroke='%23C0C0C0' stroke-width='3'/%3E%3Cellipse cx='120' cy='80' rx='15' ry='10' fill='%234A90A4'/%3E%3Ccircle cx='100' cy='120' r='3' fill='%234A90A4'/%3E%3C/svg%3E"
+            }
+        ];
+
+        let editingProductId = null;
+        let currentCategory = '';
+
+        function renderProducts(productsToRender = products) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            productsToRender.forEach((product, index) => {
+                const productCard = `
+                    <div class="product-card" style="animation-delay: ${index * 0.1}s">
+                        <div class="relative">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-32 object-cover">
+                            <div class="absolute top-2 right-2">
+                                <span class="stock-badge">${product.stock}</span>
+                            </div>
+                        </div>
+                        <div class="p-3">
+                            <h3 class="text-sm font-medium text-gray-800 mb-1 line-clamp-2 leading-tight">${product.name}</h3>
+                            <div class="price-text text-lg font-bold mb-2">${formatPrice(product.price)}</div>
+                            <div class="text-xs text-gray-500 mb-3">${product.category}</div>
+                            <div class="flex gap-2">
+                                <button onclick="editProduct(${product.id})" class="flex-1 py-2 px-3 bg-gray-100 text-gray-700 rounded text-xs font-medium">
+                                    Sửa
+                                </button>
+                                <button onclick="deleteProduct(${product.id})" class="flex-1 py-2 px-3 bg-red-500 text-white rounded text-xs font-medium">
+                                    Xóa
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += productCard;
+            });
+
+            updateStatistics();
+        }
+
+        function formatPrice(price) {
+            return new Intl.NumberFormat('vi-VN', {
+                style: 'currency',
+                currency: 'VND'
+            }).format(price);
+        }
+
+        function updateStatistics() {
+            const total = products.length;
+            const high = products.filter(p => p.stock > 50).length;
+
+            animateNumber('totalCount', total);
+            animateNumber('highStock', high);
+        }
+
+        function animateNumber(elementId, targetValue) {
+            const element = document.getElementById(elementId);
+            const currentValue = parseInt(element.textContent) || 0;
+            const increment = targetValue > currentValue ? 1 : -1;
+            const duration = 500;
+            const steps = Math.abs(targetValue - currentValue);
+            const stepDuration = steps > 0 ? duration / steps : 0;
+            
+            if (steps === 0) return;
+            
+            let current = currentValue;
+            const timer = setInterval(() => {
+                current += increment;
+                element.textContent = current;
+                
+                if (current === targetValue) {
+                    clearInterval(timer);
+                }
+            }, stepDuration);
+        }
+
+        function filterByCategory(category) {
+            currentCategory = category;
+            
+            // Update active chip
+            document.querySelectorAll('.category-chip').forEach(chip => {
+                chip.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            filterProducts(searchTerm, category);
+        }
+
+        function filterProducts(searchTerm = '', category = currentCategory) {
+            let filtered = products.filter(product => {
+                const matchesSearch = product.name.toLowerCase().includes(searchTerm) || 
+                                    product.description.toLowerCase().includes(searchTerm);
+                const matchesCategory = !category || product.category === category;
+                return matchesSearch && matchesCategory;
+            });
+
+            renderProducts(filtered);
+        }
+
+        function addNewProduct() {
+            editingProductId = null;
+            document.getElementById('modalTitle').textContent = 'Thêm sản phẩm mới';
+            document.getElementById('productForm').reset();
+            showModal();
+        }
+
+        function editProduct(id) {
+            const product = products.find(p => p.id === id);
+            if (!product) return;
+
+            editingProductId = id;
+            document.getElementById('modalTitle').textContent = 'Sửa sản phẩm';
+            document.getElementById('productName').value = product.name;
+            document.getElementById('productCategory').value = product.category;
+            document.getElementById('productStock').value = product.stock;
+            document.getElementById('productPrice').value = product.price;
+            document.getElementById('productDescription').value = product.description;
+            
+            showModal();
+        }
+
+        function deleteProduct(id) {
+            if (confirm('Bạn có chắc muốn xóa sản phẩm này?')) {
+                products = products.filter(p => p.id !== id);
+                renderProducts();
+            }
+        }
+
+        function showModal() {
+            const modal = document.getElementById('productModal');
+            const modalContent = modal.querySelector('.modal-content');
+            
+            modal.classList.remove('hidden');
+            
+            setTimeout(() => {
+                modal.classList.add('show');
+                modalContent.classList.add('show');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('productModal');
+            const modalContent = modal.querySelector('.modal-content');
+            
+            modal.classList.remove('show');
+            modalContent.classList.remove('show');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function switchTab(tab) {
+            // Update active nav item
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            // Handle tab switching logic here
+            console.log('Switched to tab:', tab);
+        }
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            filterProducts(e.target.value.toLowerCase());
+        });
+
+        document.getElementById('productForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('productName').value,
+                category: document.getElementById('productCategory').value,
+                stock: parseInt(document.getElementById('productStock').value),
+                price: parseInt(document.getElementById('productPrice').value),
+                description: document.getElementById('productDescription').value,
+                image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='40' y='40' width='120' height='120' fill='%23E0E0E0' stroke='%234A90A4' stroke-width='2'/%3E%3Ctext x='100' y='105' text-anchor='middle' fill='%23666' font-size='12'%3ESản phẩm mới%3C/text%3E%3C/svg%3E"
+            };
+
+            if (editingProductId) {
+                const index = products.findIndex(p => p.id === editingProductId);
+                products[index] = { ...products[index], ...formData };
+            } else {
+                const newId = Math.max(...products.map(p => p.id)) + 1;
+                products.push({ id: newId, ...formData });
+            }
+
+            renderProducts();
+            closeModal();
+        });
+
+        // Close modal when clicking overlay
+        document.getElementById('productModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Prevent body scroll when modal is open
+        function preventBodyScroll(prevent) {
+            document.body.style.overflow = prevent ? 'hidden' : '';
+        }
+
+        // Initial render
+        renderProducts();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96cdac04259420e2',t:'MTc1NDgwOTgxMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

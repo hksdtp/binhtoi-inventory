@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Thống Kê</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .pass { background: #d4edda; color: #155724; }
+        .fail { background: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Thống Kê Theo Danh Mục</h1>
+    
+    <div id="results"></div>
+    
+    <script>
+        // Dữ liệu test (giống trong app)
+        const testData = [
+            {category: "Bình để nến", count: 9, stock: 726, lowStock: 0},
+            {category: "Bình xông đốt tinh dầu", count: 18, stock: 1425, lowStock: 0},
+            {category: "Cốc nến thơm", count: 5, stock: 451, lowStock: 0},
+            {category: "Tất cả", count: 32, stock: 2602, lowStock: 0}
+        ];
+        
+        function runTests() {
+            const results = document.getElementById('results');
+            let html = '';
+            
+            html += '<h2>📊 Kết quả mong đợi khi chuyển tab:</h2>';
+            
+            testData.forEach(data => {
+                html += `
+                    <div class="test-result pass">
+                        <strong>Tab: ${data.category}</strong><br>
+                        ✅ Tổng SP: ${data.count}<br>
+                        ✅ Tổng tồn: ${data.stock}<br>
+                        ✅ Sắp hết: ${data.lowStock}
+                    </div>
+                `;
+            });
+            
+            html += `
+                <h2>🎯 Hướng dẫn test:</h2>
+                <ol>
+                    <li>Mở app: <a href="http://localhost:8000/index.html" target="_blank">http://localhost:8000/index.html</a></li>
+                    <li>Click tab "Tất cả" → Xem số liệu: 32 SP, 2602 tồn, 0 sắp hết</li>
+                    <li>Click tab "Bình để nến" → Xem số liệu: 9 SP, 726 tồn, 0 sắp hết</li>
+                    <li>Click tab "Bình xông đốt tinh dầu" → Xem số liệu: 18 SP, 1425 tồn, 0 sắp hết</li>
+                    <li>Click tab "Cốc nến thơm" → Xem số liệu: 5 SP, 451 tồn, 0 sắp hết</li>
+                </ol>
+                
+                <div class="test-result pass">
+                    <strong>✅ Nếu số liệu thay đổi đúng như trên → App hoạt động chính xác!</strong>
+                </div>
+            `;
+            
+            results.innerHTML = html;
+        }
+        
+        runTests();
+    </script>
+</body>
+</html>

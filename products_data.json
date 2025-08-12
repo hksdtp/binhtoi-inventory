@@ -1,0 +1,322 @@
+[
+  {
+    "id": 1,
+    "name": "Bình decor Amiri, hồng bóng nhỏ",
+    "category": "Bình để nến",
+    "stock": 37,
+    "price": 0,
+    "description": "Mã: 25631630",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "sku": "25631630"
+  },
+  {
+    "id": 2,
+    "name": "Bình decor Amiri, hồng mờ nhỏ",
+    "category": "Bình để nến",
+    "stock": 98,
+    "price": 0,
+    "description": "Mã: 25631647",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "sku": "25631647"
+  },
+  {
+    "id": 3,
+    "name": "Bình decor Amiri, xanh biển bóng nhỏ",
+    "category": "Bình để nến",
+    "stock": 43,
+    "price": 0,
+    "description": "Mã: 25631654",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "sku": "25631654"
+  },
+  {
+    "id": 4,
+    "name": "Bình decor Amiri, xanh mờ nhỏ",
+    "category": "Bình để nến",
+    "stock": 91,
+    "price": 0,
+    "description": "Mã: 25631661",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "sku": "25631661"
+  },
+  {
+    "id": 5,
+    "name": "Bình decor Amiri, Xanh lá cây bóng",
+    "category": "Bình để nến",
+    "stock": 100,
+    "price": 0,
+    "description": "Mã: 25631678",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "sku": "25631678"
+  },
+  {
+    "id": 6,
+    "name": "Bình decor Amiri, xám mờ nhỏ",
+    "category": "Bình để nến",
+    "stock": 104,
+    "price": 0,
+    "description": "Mã: 25631685",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "sku": "25631685"
+  },
+  {
+    "id": 7,
+    "name": "Bình decor Amiri, đen mờ nhỏ",
+    "category": "Bình để nến",
+    "stock": 64,
+    "price": 0,
+    "description": "Mã: 25631692",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "sku": "25631692"
+  },
+  {
+    "id": 8,
+    "name": "Bình decor Amiri, trắng bóng nhỏ",
+    "category": "Bình để nến",
+    "stock": 95,
+    "price": 0,
+    "description": "Mã: 25631708",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "sku": "25631708"
+  },
+  {
+    "id": 9,
+    "name": "Bình decor Amiri, trắng mờ nhỏ",
+    "category": "Bình để nến",
+    "stock": 94,
+    "price": 0,
+    "description": "Mã: 25631715",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "sku": "25631715"
+  },
+  {
+    "id": 10,
+    "name": "Bình décor Miri, Hồng bóng, S",
+    "category": "Bình xông đốt tinh dầu",
+    "stock": 38,
+    "price": 0,
+    "description": "Mã: 25631722",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "sku": "25631722"
+  },
+  {
+    "id": 11,
+    "name": "Bình décor Miri, Hồng mờ, S",
+    "category": "Bình xông đốt tinh dầu",
+    "stock": 39,
+    "price": 0,
+    "description": "Mã: 25631739",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "sku": "25631739"
+  },
+  {
+    "id": 12,
+    "name": "Bình décor Miri, Xanh bóng, S",
+    "category": "Bình xông đốt tinh dầu",
+    "stock": 47,
+    "price": 0,
+    "description": "Mã: 25631746",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "sku": "25631746"
+  },
+  {
+    "id": 13,
+    "name": "Bình décor Miri, Xanh mờ, S",
+    "category": "Bình xông đốt tinh dầu",
+    "stock": 66,
+    "price": 0,
+    "description": "Mã: 25631753",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "sku": "25631753"
+  },
+  {
+    "id": 14,
+    "name": "Bình décor Miri, Xanh lá bóng, S",
+    "category": "Bình xông đốt tinh dầu",
+    "stock": 84,
+    "price": 0,
+    "description": "Mã: 25631760",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "sku": "25631760"
+  },
+  {
+    "id": 15,
+    "name": "Bình décor Miri, Xám mờ, S",
+    "category": "Bình xông đốt tinh dầu",
+    "stock": 85,
+    "price": 0,
+    "description": "Mã: 25631777",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "sku": "25631777"
+  },
+  {
+    "id": 16,
+    "name": "Bình décor Miri, Đen mờ, S",
+    "category": "Bình xông đốt tinh dầu",
+    "stock": 75,
+    "price": 0,
+    "description": "Mã: 25631784",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "sku": "25631784"
+  },
+  {
+    "id": 17,
+    "name": "Bình décor Miri, Trắng bóng, S",
+    "category": "Bình xông đốt tinh dầu",
+    "stock": 83,
+    "price": 0,
+    "description": "Mã: 25631791",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "sku": "25631791"
+  },
+  {
+    "id": 18,
+    "name": "Bình décor Miri, Trắng mờ, S",
+    "category": "Bình xông đốt tinh dầu",
+    "stock": 90,
+    "price": 0,
+    "description": "Mã: 25631807",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "sku": "25631807"
+  },
+  {
+    "id": 19,
+    "name": "Bình décor Miri, Hồng bóng, M",
+    "category": "Bình xông đốt tinh dầu",
+    "stock": 74,
+    "price": 0,
+    "description": "Mã: 25631814",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "sku": "25631814"
+  },
+  {
+    "id": 20,
+    "name": "Bình décor Miri, Hồng mờ, M",
+    "category": "Bình xông đốt tinh dầu",
+    "stock": 98,
+    "price": 0,
+    "description": "Mã: 25631821",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "sku": "25631821"
+  },
+  {
+    "id": 21,
+    "name": "Bình décor Miri, Xanh bóng, M",
+    "category": "Bình xông đốt tinh dầu",
+    "stock": 99,
+    "price": 0,
+    "description": "Mã: 25631838",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "sku": "25631838"
+  },
+  {
+    "id": 22,
+    "name": "Bình décor Miri, Xanh mờ, M",
+    "category": "Bình xông đốt tinh dầu",
+    "stock": 97,
+    "price": 0,
+    "description": "Mã: 25631845",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "sku": "25631845"
+  },
+  {
+    "id": 23,
+    "name": "Bình décor Miri, Xanh lá bóng, M",
+    "category": "Bình xông đốt tinh dầu",
+    "stock": 90,
+    "price": 0,
+    "description": "Mã: 25631852",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "sku": "25631852"
+  },
+  {
+    "id": 24,
+    "name": "Bình décor Miri, Xám mờ, M",
+    "category": "Bình xông đốt tinh dầu",
+    "stock": 107,
+    "price": 0,
+    "description": "Mã: 25631869",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "sku": "25631869"
+  },
+  {
+    "id": 25,
+    "name": "Bình décor Miri, Đen mờ, M",
+    "category": "Bình xông đốt tinh dầu",
+    "stock": 80,
+    "price": 0,
+    "description": "Mã: 25631876",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "sku": "25631876"
+  },
+  {
+    "id": 26,
+    "name": "Bình décor Miri, Trắng bóng, M",
+    "category": "Bình xông đốt tinh dầu",
+    "stock": 90,
+    "price": 0,
+    "description": "Mã: 25631883",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "sku": "25631883"
+  },
+  {
+    "id": 27,
+    "name": "Bình décor Miri, Trắng mờ, M",
+    "category": "Bình xông đốt tinh dầu",
+    "stock": 83,
+    "price": 0,
+    "description": "Mã: 25631890",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "sku": "25631890"
+  },
+  {
+    "id": 28,
+    "name": "Cốc sứ Deco JA657",
+    "category": "Cốc nến thơm",
+    "stock": 81,
+    "price": 0,
+    "description": "Mã: 8935261208563",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "sku": "8935261208563"
+  },
+  {
+    "id": 29,
+    "name": "Cốc sứ Deco JA655",
+    "category": "Cốc nến thơm",
+    "stock": 81,
+    "price": 0,
+    "description": "Mã: 8935261208570",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "sku": "8935261208570"
+  },
+  {
+    "id": 30,
+    "name": "Cốc sứ Deco JA656",
+    "category": "Cốc nến thơm",
+    "stock": 78,
+    "price": 0,
+    "description": "Mã: 8935261208587",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "sku": "8935261208587"
+  },
+  {
+    "id": 31,
+    "name": "Cốc sứ Deco JA654",
+    "category": "Cốc nến thơm",
+    "stock": 81,
+    "price": 0,
+    "description": "Mã: 8935261208594",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "sku": "8935261208594"
+  },
+  {
+    "id": 32,
+    "name": "Cốc sứ Deco JA028",
+    "category": "Cốc nến thơm",
+    "stock": 130,
+    "price": 0,
+    "description": "Mã: 8935261208600",
+    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "sku": "8935261208600"
+  }
+]
