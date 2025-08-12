@@ -1,46 +1,111 @@
-# 📱 App Quản Lý Tồn Kho Bình
+# 🏪 Binhtoi Inventory Management System
 
-Ứng dụng web quản lý tồn kho với giao diện mobile-first, được xây dựng dựa trên dữ liệu thực từ file Excel "Ton kho binh.xlsx".
+> Modern inventory management system with Supabase integration and real-time image upload capabilities
 
-## 🚀 Tính năng chính
+[![GitHub stars](https://img.shields.io/github/stars/hksdtp/binhtoi-inventory?style=social)](https://github.com/hksdtp/binhtoi-inventory/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/hksdtp/binhtoi-inventory?style=social)](https://github.com/hksdtp/binhtoi-inventory/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/hksdtp/binhtoi-inventory)](https://github.com/hksdtp/binhtoi-inventory/issues)
+[![License](https://img.shields.io/github/license/hksdtp/binhtoi-inventory)](LICENSE)
 
-- **📊 Dashboard tổng quan**: Hiển thị tổng số sản phẩm, tổng tồn kho, số sản phẩm sắp hết hàng
-- **🔍 Tìm kiếm thông minh**: Tìm theo tên sản phẩm, mã SKU, hoặc danh mục
-- **🏷️ Lọc theo danh mục**: Bình để nến, Bình xông đốt tinh dầu, Cốc nến thơm
-- **📱 Giao diện responsive**: Tối ưu cho mobile và desktop
-- **🎨 UI/UX hiện đại**: Thiết kế theo phong cách Shopee với animations mượt mà
-- **⚡ Hiệu suất cao**: Load dữ liệu nhanh với lazy loading
+A comprehensive inventory management system built with modern web technologies, featuring real-time data synchronization with Supabase, advanced image management, and a responsive mobile-first design.
 
-## 📁 Cấu trúc dự án
+## ✨ Features
 
-```
-binhtoi/
-├── Ton kho binh.xlsx      # File Excel nguồn
-├── data_loader.py         # Script đọc Excel và chuyển đổi JSON
-├── products_data.json     # Dữ liệu sản phẩm (được tạo tự động)
-├── index.html            # App chính
-├── server.py             # HTTP server
-├── giaodienapp           # File giao diện mẫu gốc
-└── README.md             # Hướng dẫn này
-```
+### 🎯 Core Features
+- 📱 **Responsive Design** - Works perfectly on desktop, tablet, and mobile
+- 🔍 **Smart Search** - Real-time product search and filtering
+- 📊 **Dashboard Analytics** - Product statistics and inventory insights
+- 🏷️ **Category Management** - Organize products by categories
+- 📈 **Stock Tracking** - Monitor inventory levels and stock status
 
-## 🛠️ Cách chạy
+### 🖼️ Image Management
+- 📤 **Bulk Upload** - Upload multiple product images at once
+- 🌐 **Web Upload Interface** - Drag-and-drop image upload from browser
+- ☁️ **Cloud Storage** - Images stored on Supabase Storage with CDN
+- 🖼️ **Auto Optimization** - Automatic image processing and optimization
 
-### 1. Chuẩn bị dữ liệu
+### 🔄 Data Synchronization
+- ⚡ **Real-time Sync** - Instant data synchronization with Supabase
+- 🔄 **Offline Support** - Works offline with local caching
+- 📱 **Cross-device Sync** - Access your data from any device
+- 🔐 **Secure Backup** - Automatic cloud backup and recovery
+
+## 🛠️ Tech Stack
+
+- **Frontend**: HTML5, CSS3, JavaScript (Vanilla)
+- **Backend**: Python with Supabase client
+- **Database**: PostgreSQL (Supabase)
+- **Storage**: Supabase Storage with CDN
+- **Styling**: Tailwind CSS
+- **Icons**: Font Awesome
+- **Image Processing**: Pillow (PIL)
+
+## 📁 Project Structure
+
 ```bash
-# Đọc file Excel và tạo JSON
-python3 data_loader.py
+binhtoi-inventory/
+├── 📄 index.html              # Main web interface
+├── 🐍 supabase_config.py      # Database configuration
+├── 📤 upload_images.py        # Bulk image upload script
+├── 🎨 create_sample_images.py # Generate sample images
+├── 🔄 supabase_sync.py        # Data synchronization
+├── 📊 products_data.json      # Local product data
+├── 🖼️ images/                 # Product images folder
+├── 📚 SUPABASE_SETUP.md       # Setup instructions
+├── 📖 HUONG_DAN_HINH_ANH.md   # Image management guide
+└── ⚙️ requirements.txt        # Python dependencies
 ```
 
-### 2. Chạy server
-```bash
-# Khởi động server web
-python3 server.py
-```
+## 🚀 Quick Start
 
-### 3. Mở app
-- Server sẽ tự động mở browser tại: `http://localhost:8000/index.html`
-- Hoặc mở thủ công: http://localhost:8000/index.html
+### Prerequisites
+
+- Python 3.7+
+- Git
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/hksdtp/binhtoi-inventory.git
+   cd binhtoi-inventory
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pip3 install -r requirements.txt
+   ```
+
+3. **Setup Supabase** (Optional - for cloud features)
+   ```bash
+   # Copy environment template
+   cp .env.example .env
+
+   # Edit .env with your Supabase credentials
+   # Get them from: https://supabase.com/dashboard
+   ```
+
+4. **Run the application**
+   ```bash
+   # Start the web server
+   python3 -m http.server 8001
+
+   # Open in browser
+   open http://localhost:8001
+   ```
+
+### With Supabase Integration
+
+1. **Sync data to cloud**
+   ```bash
+   python3 supabase_sync.py
+   ```
+
+2. **Upload product images**
+   ```bash
+   # Place images in images/ folder (named by SKU)
+   python3 upload_images.py
+   ```
 
 ## 📊 Dữ liệu hiện tại
 
