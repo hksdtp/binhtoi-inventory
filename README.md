@@ -95,12 +95,29 @@ binhtoi-inventory/
    ```
 
 4. **Run the application**
+
+   **Option 1: Docker (Recommended)**
    ```bash
-   # Start the web server
+   # Start with Docker
+   docker-compose up -d webapp
+
+   # Open Pinterest-style app
+   open http://localhost:8000
+   ```
+
+   **Option 2: Python HTTP Server**
+   ```bash
+   # Start Python server
    python3 -m http.server 8001
 
    # Open in browser
    open http://localhost:8001
+   ```
+
+   **Option 3: Interactive Script**
+   ```bash
+   # Run interactive startup script
+   ./start-server.sh
    ```
 
 ### With Supabase Integration
