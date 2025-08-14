@@ -1,20 +1,28 @@
-# 🏪 Binhtoi Inventory Management System
+# 🎨 Binhtoi Inventory Management System - Pinterest Style
 
-> Modern inventory management system with Supabase integration and real-time image upload capabilities
+> Modern inventory management system with Pinterest-inspired design, Supabase integration, and mobile-first experience
 
 [![GitHub stars](https://img.shields.io/github/stars/hksdtp/binhtoi-inventory?style=social)](https://github.com/hksdtp/binhtoi-inventory/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/hksdtp/binhtoi-inventory?style=social)](https://github.com/hksdtp/binhtoi-inventory/network/members)
 [![GitHub issues](https://img.shields.io/github/issues/hksdtp/binhtoi-inventory)](https://github.com/hksdtp/binhtoi-inventory/issues)
 [![License](https://img.shields.io/github/license/hksdtp/binhtoi-inventory)](LICENSE)
 
-A comprehensive inventory management system built with modern web technologies, featuring real-time data synchronization with Supabase, advanced image management, and a responsive mobile-first design.
+A comprehensive inventory management system featuring **Pinterest-style masonry layout**, mobile-first design optimized for iOS experience, real-time data synchronization with Supabase, and advanced image management capabilities.
 
 ## ✨ Features
 
+### 🎨 Pinterest-Style Design
+- 📱 **Masonry Grid Layout** - Variable height cards with natural stacking
+- 🔄 **Infinite Scroll** - Smooth loading as you scroll down
+- 🎭 **Hover Overlays** - Interactive action buttons on card hover
+- 📲 **Pull-to-Refresh** - iOS-style refresh functionality
+- 🎯 **Floating Action Button** - Quick access to upload features
+- 📱 **Mobile-First** - Optimized for Pinterest iOS app experience
+
 ### 🎯 Core Features
-- 📱 **Responsive Design** - Works perfectly on desktop, tablet, and mobile
+- 📱 **Responsive Design** - 2-6 columns based on screen size
 - 🔍 **Smart Search** - Real-time product search and filtering
-- 📊 **Dashboard Analytics** - Product statistics and inventory insights
+- 📊 **Product Details** - Modal overlays with full information
 - 🏷️ **Category Management** - Organize products by categories
 - 📈 **Stock Tracking** - Monitor inventory levels and stock status
 
@@ -23,6 +31,7 @@ A comprehensive inventory management system built with modern web technologies, 
 - 🌐 **Web Upload Interface** - Drag-and-drop image upload from browser
 - ☁️ **Cloud Storage** - Images stored on Supabase Storage with CDN
 - 🖼️ **Auto Optimization** - Automatic image processing and optimization
+- 📱 **Mobile Upload** - Touch-friendly upload experience
 
 ### 🔄 Data Synchronization
 - ⚡ **Real-time Sync** - Instant data synchronization with Supabase

@@ -1,4 +1,4 @@
-# Hướng dẫn kết nối Supabase
+# Hướng dẫn kết nối Supabase - Pinterest Style App
 
 ## 1. Tạo dự án Supabase
 
