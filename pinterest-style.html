@@ -313,95 +313,6 @@
             width: 0px;
             background: transparent;
         }
-
-        /* Smooth animations */
-        .pin-card {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Staggered animation for cards */
-        .pin-card:nth-child(1) { animation-delay: 0.1s; }
-        .pin-card:nth-child(2) { animation-delay: 0.2s; }
-        .pin-card:nth-child(3) { animation-delay: 0.3s; }
-        .pin-card:nth-child(4) { animation-delay: 0.4s; }
-        .pin-card:nth-child(5) { animation-delay: 0.5s; }
-        .pin-card:nth-child(6) { animation-delay: 0.6s; }
-
-        /* Modal animations */
-        #productModal, #uploadModal {
-            animation: modalFadeIn 0.3s ease-out;
-        }
-
-        @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        /* iOS-style pull to refresh indicator */
-        .pull-to-refresh {
-            position: fixed;
-            top: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--pinterest-white);
-            border-radius: 20px;
-            padding: 8px 16px;
-            box-shadow: var(--shadow-pinterest);
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 999;
-        }
-
-        .pull-to-refresh.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(10px);
-        }
-
-        /* Enhanced mobile experience */
-        @media (max-width: 640px) {
-            .pinterest-header {
-                padding: 8px 12px;
-            }
-
-            .search-input {
-                font-size: 16px; /* Prevent zoom on iOS */
-                padding: 10px 12px 10px 40px;
-            }
-
-            .masonry-container {
-                margin-top: 70px;
-                padding-bottom: 80px; /* Space for mobile nav */
-            }
-
-            .pin-card {
-                margin-bottom: 6px;
-            }
-
-            .fab {
-                bottom: 90px;
-                right: 16px;
-                width: 48px;
-                height: 48px;
-                font-size: 18px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -432,14 +343,6 @@
         </div>
     </header>
 
-    <!-- Pull to Refresh Indicator -->
-    <div id="pullToRefresh" class="pull-to-refresh">
-        <div class="flex items-center gap-2">
-            <div class="loading-spinner"></div>
-            <span class="text-sm font-medium">Đang làm mới...</span>
-        </div>
-    </div>
-
     <!-- Main Content -->
     <main class="masonry-container">
         <!-- Loading Indicator -->
@@ -447,12 +350,12 @@
             <div class="loading-spinner mx-auto mb-2"></div>
             <p class="text-gray-600">Đang tải...</p>
         </div>
-
+        
         <!-- Masonry Grid -->
         <div id="masonryGrid" class="masonry-grid">
             <!-- Products will be loaded here -->
         </div>
-
+        
         <!-- Load More Trigger -->
         <div id="loadMoreTrigger" class="text-center py-8 hidden">
             <div class="loading-spinner mx-auto"></div>
@@ -636,9 +539,6 @@
                 // Setup infinite scroll
                 this.setupInfiniteScroll();
 
-                // Setup pull to refresh
-                this.setupPullToRefresh();
-
                 console.log('✅ App initialized successfully');
             }
 
@@ -708,14 +608,8 @@
                 const endIndex = startIndex + this.itemsPerPage;
                 const productsToRender = this.filteredProducts.slice(startIndex, endIndex);
 
-                productsToRender.forEach((product, index) => {
+                productsToRender.forEach(product => {
                     const pinCard = this.createPinCard(product);
-
-                    // Add staggered animation delay
-                    if (!append) {
-                        pinCard.style.animationDelay = `${(index % 6) * 0.1}s`;
-                    }
-
                     grid.appendChild(pinCard);
                 });
 
@@ -820,55 +714,6 @@
                 });
 
                 observer.observe(document.getElementById('loadMoreTrigger'));
-            }
-
-            setupPullToRefresh() {
-                let startY = 0;
-                let currentY = 0;
-                let isPulling = false;
-                const threshold = 80;
-                const indicator = document.getElementById('pullToRefresh');
-
-                document.addEventListener('touchstart', (e) => {
-                    if (window.scrollY === 0) {
-                        startY = e.touches[0].clientY;
-                        isPulling = true;
-                    }
-                }, { passive: true });
-
-                document.addEventListener('touchmove', (e) => {
-                    if (!isPulling) return;
-
-                    currentY = e.touches[0].clientY;
-                    const pullDistance = currentY - startY;
-
-                    if (pullDistance > 0 && pullDistance < threshold * 2) {
-                        e.preventDefault();
-                        const opacity = Math.min(pullDistance / threshold, 1);
-                        indicator.style.opacity = opacity;
-                        indicator.style.transform = `translateX(-50%) translateY(${Math.min(pullDistance / 2, 40)}px)`;
-                    }
-                }, { passive: false });
-
-                document.addEventListener('touchend', async (e) => {
-                    if (!isPulling) return;
-
-                    const pullDistance = currentY - startY;
-
-                    if (pullDistance > threshold) {
-                        indicator.classList.add('show');
-                        await this.loadProducts();
-                        setTimeout(() => {
-                            indicator.classList.remove('show');
-                        }, 1000);
-                    }
-
-                    indicator.style.opacity = '0';
-                    indicator.style.transform = 'translateX(-50%) translateY(0)';
-                    isPulling = false;
-                    startY = 0;
-                    currentY = 0;
-                }, { passive: true });
             }
 
             loadMoreProducts() {

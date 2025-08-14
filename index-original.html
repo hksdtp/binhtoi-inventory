@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Tồn Kho Bình - Working Version</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #667eea;
+            --primary-light: #764ba2;
+            --accent-color: #4facfe;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-primary: #f8fafc;
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 50%, var(--accent-color) 100%);
+        }
+        
+        .modern-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .modern-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .category-chip {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 10px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+        }
+        
+        .category-chip.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border-color: transparent;
+        }
+        
+        .stock-badge {
+            font-size: 11px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .stock-low {
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            color: var(--danger-color);
+        }
+        
+        .stock-medium {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: var(--warning-color);
+        }
+        
+        .stock-high {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            color: var(--success-color);
+        }
+        
+        .modern-search {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .modern-search:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="gradient-bg text-white sticky top-0 z-50">
+        <div class="px-6 py-6">
+            <div class="mb-6">
+                <h1 class="text-2xl font-bold mb-2 flex items-center gap-3">
+                    <i class="fas fa-boxes text-3xl"></i>
+                    <span>Quản Lý Tồn Kho</span>
+                </h1>
+                <p class="text-white/80 font-medium">Luxury Collection Management</p>
+            </div>
+            
+            <div class="flex items-center gap-3 mb-6">
+                <div class="flex-1 relative">
+                    <i class="fas fa-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm, mã SKU..."
+                           class="modern-search w-full pl-12 pr-4">
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="openUploadModal()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 font-semibold">
+                        <i class="fas fa-upload"></i>
+                        <span class="hidden sm:inline">Upload</span>
+                    </button>
+                    <button onclick="window.supabaseManager && window.supabaseManager.syncData()" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2 font-semibold">
+                        <i class="fas fa-sync-alt"></i>
+                        <span class="hidden sm:inline">Sync</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="flex gap-3 overflow-x-auto pb-2" id="categoryChips">
+                <button class="category-chip active" onclick="filterByCategory('')">
+                    <i class="fas fa-th-large mr-2"></i>Tất cả
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats Cards -->
+    <div class="px-6 py-6">
+        <div class="grid grid-cols-3 gap-4 mb-6">
+            <div class="modern-card p-6 text-center relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-bl-3xl flex items-center justify-center">
+                    <i class="fas fa-box text-white text-lg"></i>
+                </div>
+                <div class="text-2xl font-bold text-blue-600 mb-2" id="totalCount">0</div>
+                <div class="text-sm font-semibold text-gray-600 uppercase tracking-wide" id="totalCountLabel">Tổng SP</div>
+            </div>
+            <div class="modern-card p-6 text-center relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-bl-3xl flex items-center justify-center">
+                    <i class="fas fa-warehouse text-white text-lg"></i>
+                </div>
+                <div class="text-2xl font-bold text-green-600 mb-2" id="totalStock">0</div>
+                <div class="text-sm font-semibold text-gray-600 uppercase tracking-wide" id="totalStockLabel">Tổng tồn</div>
+            </div>
+            <div class="modern-card p-6 text-center relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-red-400 to-red-600 rounded-bl-3xl flex items-center justify-center">
+                    <i class="fas fa-exclamation-triangle text-white text-lg"></i>
+                </div>
+                <div class="text-2xl font-bold text-red-600 mb-2" id="lowStock">0</div>
+                <div class="text-sm font-semibold text-gray-600 uppercase tracking-wide" id="lowStockLabel">Sắp hết</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="px-6">
+        <div class="mb-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-2 flex items-center gap-2">
+                <i class="fas fa-grid-3x3 text-blue-600"></i>
+                Danh Sách Sản Phẩm
+            </h2>
+        </div>
+        
+        <div id="loadingIndicator" class="text-center py-8 hidden">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+            <p class="mt-2 text-gray-600">Đang tải dữ liệu...</p>
+        </div>
+        
+        <div id="productsGrid" class="grid grid-cols-2 gap-4">
+            <!-- Products will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div id="uploadModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-md">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-green-500 to-green-600 text-white p-6 rounded-t-xl">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="text-xl font-bold flex items-center gap-2">
+                            <i class="fas fa-camera"></i>
+                            Upload Hình Ảnh
+                        </h3>
+                        <p class="text-green-100 text-sm mt-1">Thay đổi hình ảnh sản phẩm</p>
+                    </div>
+                    <button onclick="closeUploadModal()" class="text-white hover:text-green-200 text-xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Body -->
+            <div class="p-6">
+                <!-- Product Selection -->
+                <div class="mb-6">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        <i class="fas fa-box mr-1"></i>
+                        Chọn sản phẩm:
+                    </label>
+                    <select id="productSelect" class="w-full border-2 border-gray-200 rounded-lg px-4 py-3 focus:border-green-500 focus:outline-none transition-colors">
+                        <option value="">-- Chọn sản phẩm --</option>
+                    </select>
+                </div>
+
+                <!-- File Upload -->
+                <div class="mb-6">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        <i class="fas fa-image mr-1"></i>
+                        Chọn hình ảnh:
+                    </label>
+                    <div class="relative">
+                        <input type="file" id="imageFile" accept="image/*" class="hidden">
+                        <button onclick="document.getElementById('imageFile').click()"
+                                class="w-full border-2 border-dashed border-gray-300 rounded-lg px-4 py-8 text-center hover:border-green-500 hover:bg-green-50 transition-colors">
+                            <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"></i>
+                            <p class="text-gray-600 font-medium">Click để chọn ảnh</p>
+                            <p class="text-gray-400 text-sm">JPG, PNG, WebP (tối đa 50MB)</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Image Preview -->
+                <div class="mb-6" id="imagePreview" style="display: none;">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                        <i class="fas fa-eye mr-1"></i>
+                        Xem trước:
+                    </label>
+                    <div class="relative">
+                        <img id="previewImg" class="w-full h-48 object-cover rounded-lg border-2 border-gray-200">
+                        <button onclick="document.getElementById('imageFile').value=''; document.getElementById('imagePreview').style.display='none';"
+                                class="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center">
+                            <i class="fas fa-times text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex gap-3">
+                    <button onclick="closeUploadModal()" class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-3 rounded-lg font-semibold transition-colors">
+                        <i class="fas fa-times mr-2"></i>
+                        Hủy
+                    </button>
+                    <button onclick="uploadImage()" id="uploadBtn" class="flex-1 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                        <i class="fas fa-upload mr-2"></i>
+                        Upload
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let products = [];
+        let allCategories = [];
+        let currentCategory = '';
+
+        // Load products
+        async function loadProducts() {
+            try {
+                showLoading(true);
+
+                // Try loading from Supabase first
+                if (window.supabaseManager && window.supabaseManager.supabase) {
+                    try {
+                        console.log('🔄 Loading from Supabase...');
+                        const response = await window.supabaseManager.supabase
+                            .from('products')
+                            .select('*')
+                            .order('sku');
+
+                        if (response.data && response.data.length > 0) {
+                            products = response.data;
+                            allCategories = [...new Set(response.data.map(p => p.category))].sort();
+                            updateCategoryChips();
+                            renderProducts();
+                            showLoading(false);
+                            console.log('✅ Loaded from Supabase:', products.length, 'products');
+                            return;
+                        }
+                    } catch (supabaseError) {
+                        console.warn('⚠️ Supabase failed, trying local:', supabaseError);
+                    }
+                }
+
+                // Fallback to local JSON
+                console.log('📄 Loading from local JSON...');
+                const response = await fetch('products_data.json');
+                if (!response.ok) {
+                    throw new Error('Không thể tải dữ liệu');
+                }
+                products = await response.json();
+
+                console.log('✅ Loaded from local JSON:', products.length, 'products');
+
+                allCategories = [...new Set(products.map(p => p.category))].sort();
+                updateCategoryChips();
+                renderProducts();
+                showLoading(false);
+            } catch (error) {
+                console.error('❌ Lỗi:', error);
+                showLoading(false);
+                document.getElementById('productsGrid').innerHTML = `
+                    <div class="col-span-2 text-center py-8">
+                        <p class="text-red-600">Lỗi tải dữ liệu: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function showLoading(show) {
+            document.getElementById('loadingIndicator').classList.toggle('hidden', !show);
+            document.getElementById('productsGrid').classList.toggle('hidden', show);
+        }
+
+        function updateCategoryChips() {
+            const container = document.getElementById('categoryChips');
+            const allButton = container.querySelector('button');
+            
+            const existingChips = container.querySelectorAll('button:not(:first-child)');
+            existingChips.forEach(chip => chip.remove());
+            
+            const categoryIcons = {
+                'Bình để nến': 'fas fa-fire',
+                'Bình xông đốt tinh dầu': 'fas fa-spa',
+                'Cốc nến thơm': 'fas fa-coffee'
+            };
+            
+            allCategories.forEach(category => {
+                const chip = document.createElement('button');
+                chip.className = 'category-chip';
+                const icon = categoryIcons[category] || 'fas fa-tag';
+                chip.innerHTML = `<i class="${icon} mr-2"></i>${category}`;
+                chip.onclick = () => filterByCategory(category);
+                container.appendChild(chip);
+            });
+        }
+
+        function renderProducts(productsToRender = products) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            if (productsToRender.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-2 text-center py-12">
+                        <div class="modern-card p-8">
+                            <i class="fas fa-search text-6xl text-gray-300 mb-4"></i>
+                            <h3 class="text-lg font-bold mb-2">Không tìm thấy sản phẩm</h3>
+                            <p class="text-gray-600">Thử thay đổi từ khóa tìm kiếm hoặc bộ lọc</p>
+                        </div>
+                    </div>
+                `;
+                updateStatistics(productsToRender);
+                return;
+            }
+
+            productsToRender.forEach((product, index) => {
+                const stockClass = getStockClass(product.stock);
+                const categoryIcon = getCategoryIcon(product.category);
+                const productCard = `
+                    <div class="product-card group">
+                        <div class="relative">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-40 object-cover">
+                            <div class="absolute top-3 right-3">
+                                <span class="stock-badge ${stockClass}">${product.stock}</span>
+                            </div>
+                            <div class="absolute top-3 left-3">
+                                <div class="bg-white/90 rounded-full p-2">
+                                    <i class="${categoryIcon} text-blue-600"></i>
+                                </div>
+                            </div>
+                            <!-- Upload button overlay -->
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                <button onclick="openUploadModalForProduct('${product.sku}', '${product.name.replace(/'/g, "\\'")}'); event.stopPropagation();"
+                                        class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transform scale-90 hover:scale-100 transition-transform">
+                                    <i class="fas fa-camera"></i>
+                                    Thay ảnh
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-sm font-bold mb-3 leading-tight">${product.name}</h3>
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="font-semibold bg-gray-100 px-2 py-1 rounded-lg">${product.category}</span>
+                                <span class="text-gray-500 font-mono">${product.sku || 'N/A'}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += productCard;
+            });
+
+            updateStatistics(productsToRender);
+        }
+
+        function updateStatistics(filteredProducts = products) {
+            const total = filteredProducts.length;
+            const totalStock = filteredProducts.reduce((sum, p) => sum + p.stock, 0);
+            const lowStock = filteredProducts.filter(p => p.stock <= 10).length;
+
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('totalStock').textContent = totalStock;
+            document.getElementById('lowStock').textContent = lowStock;
+            
+            const categoryName = currentCategory || 'Tất cả';
+            if (currentCategory) {
+                document.getElementById('totalCountLabel').textContent = `SP ${categoryName}`;
+                document.getElementById('totalStockLabel').textContent = `Tồn ${categoryName}`;
+                document.getElementById('lowStockLabel').textContent = `Sắp hết ${categoryName}`;
+            } else {
+                document.getElementById('totalCountLabel').textContent = 'Tổng SP';
+                document.getElementById('totalStockLabel').textContent = 'Tổng tồn';
+                document.getElementById('lowStockLabel').textContent = 'Sắp hết';
+            }
+            
+            console.log(`Stats: ${categoryName} - ${total} SP, ${totalStock} tồn, ${lowStock} sắp hết`);
+        }
+
+        function filterByCategory(category) {
+            currentCategory = category;
+            
+            document.querySelectorAll('.category-chip').forEach(chip => {
+                chip.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            let filtered = products;
+            if (category) {
+                filtered = products.filter(p => p.category === category);
+            }
+            
+            document.getElementById('searchInput').value = '';
+            renderProducts(filtered);
+        }
+
+        function getStockClass(stock) {
+            if (stock <= 10) return 'stock-low';
+            if (stock <= 50) return 'stock-medium';
+            return 'stock-high';
+        }
+
+        function getCategoryIcon(category) {
+            const icons = {
+                'Bình để nến': 'fas fa-fire',
+                'Bình xông đốt tinh dầu': 'fas fa-spa',
+                'Cốc nến thơm': 'fas fa-coffee'
+            };
+            return icons[category] || 'fas fa-tag';
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            let filtered = products.filter(product => {
+                const matchesSearch = product.name.toLowerCase().includes(searchTerm) || 
+                                    (product.sku && product.sku.toLowerCase().includes(searchTerm));
+                const matchesCategory = !currentCategory || product.category === currentCategory;
+                return matchesSearch && matchesCategory;
+            });
+            renderProducts(filtered);
+        });
+
+        // Initial load
+        loadProducts();
+    </script>
+    
+    <!-- Supabase Integration -->
+    <script src="supabase_client.js"></script>
+    <script>
+        // Khởi tạo Supabase khi page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            window.supabaseManager = new SupabaseManager();
+            const isSupabaseReady = await window.supabaseManager.init();
+
+            if (isSupabaseReady) {
+                console.log('✅ Supabase initialized successfully');
+                // Reload data with Supabase
+                loadProducts();
+            } else {
+                console.log('⚠️ Supabase not available, using local data');
+            }
+        });
+        
+        // Note: Upload and Sync buttons are now directly in HTML header
+
+        // Upload Modal Functions
+        function openUploadModal() {
+            populateProductSelect();
+            document.getElementById('uploadModal').classList.remove('hidden');
+        }
+
+        function openUploadModalForProduct(sku, productName) {
+            populateProductSelect();
+            document.getElementById('productSelect').value = sku;
+            document.getElementById('uploadModal').classList.remove('hidden');
+        }
+
+        function closeUploadModal() {
+            document.getElementById('uploadModal').classList.add('hidden');
+            document.getElementById('imageFile').value = '';
+            document.getElementById('productSelect').value = '';
+            document.getElementById('imagePreview').style.display = 'none';
+            // Reset upload button
+            const uploadBtn = document.getElementById('uploadBtn');
+            uploadBtn.disabled = false;
+            uploadBtn.innerHTML = '<i class="fas fa-upload mr-2"></i>Upload';
+        }
+
+        function populateProductSelect() {
+            const select = document.getElementById('productSelect');
+            select.innerHTML = '<option value="">-- Chọn sản phẩm --</option>';
+
+            products.forEach(product => {
+                const option = document.createElement('option');
+                option.value = product.sku;
+                option.textContent = `${product.name} (${product.sku})`;
+                select.appendChild(option);
+            });
+        }
+
+        // Preview image when selected
+        document.getElementById('imageFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('previewImg').src = e.target.result;
+                    document.getElementById('imagePreview').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                document.getElementById('imagePreview').style.display = 'none';
+            }
+        });
+
+        async function uploadImage() {
+            const sku = document.getElementById('productSelect').value;
+            const fileInput = document.getElementById('imageFile');
+            const file = fileInput.files[0];
+
+            if (!sku) {
+                alert('Vui lòng chọn sản phẩm');
+                return;
+            }
+
+            if (!file) {
+                alert('Vui lòng chọn hình ảnh');
+                return;
+            }
+
+            const uploadBtn = document.getElementById('uploadBtn');
+            uploadBtn.disabled = true;
+            uploadBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Đang upload...';
+
+            try {
+                // Upload to Supabase Storage
+                const fileName = `${sku}.${file.name.split('.').pop()}`;
+
+                // Remove old file first
+                try {
+                    await supabaseManager.supabase.storage.from('product-images').remove([fileName]);
+                } catch (e) {
+                    // Ignore if file doesn't exist
+                }
+
+                // Upload new file
+                const { data, error } = await supabaseManager.supabase.storage
+                    .from('product-images')
+                    .upload(fileName, file, {
+                        contentType: file.type
+                    });
+
+                if (error) {
+                    throw error;
+                }
+
+                // Get public URL
+                const { data: urlData } = supabaseManager.supabase.storage
+                    .from('product-images')
+                    .getPublicUrl(fileName);
+
+                // Update product in database
+                const { error: updateError } = await supabaseManager.supabase
+                    .from('products')
+                    .update({ image: urlData.publicUrl })
+                    .eq('sku', sku);
+
+                if (updateError) {
+                    throw updateError;
+                }
+
+                // Show success message
+                showSuccessMessage('Upload thành công! Hình ảnh đã được cập nhật.');
+                closeUploadModal();
+                loadProducts(); // Reload products to show new image
+
+            } catch (error) {
+                console.error('Upload error:', error);
+                showErrorMessage('Lỗi upload: ' + error.message);
+            } finally {
+                uploadBtn.disabled = false;
+                uploadBtn.innerHTML = '<i class="fas fa-upload mr-2"></i>Upload';
+            }
+        }
+
+        // Notification functions
+        function showSuccessMessage(message) {
+            showNotification(message, 'success');
+        }
+
+        function showErrorMessage(message) {
+            showNotification(message, 'error');
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 ${
+                type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+            }`;
+            notification.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i>
+                    <span class="font-medium">${message}</span>
+                </div>
+            `;
+
+            document.body.appendChild(notification);
+
+            // Animate in
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+
+            // Animate out and remove
+            setTimeout(() => {
+                notification.style.transform = 'translateX(full)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
