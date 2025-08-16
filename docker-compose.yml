@@ -1,12 +1,23 @@
 version: '3.8'
 
 services:
-  webapp:
-    build: .
+  binhtoi-webapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: binhtoi-inventory
     ports:
       - "8000:8000"
     volumes:
       - .:/app
+      - /app/__pycache__  # Exclude pycache from volume mount
     environment:
       - PYTHONUNBUFFERED=1
+      - PORT=8000
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/index.html"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s

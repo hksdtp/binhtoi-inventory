@@ -6,7 +6,11 @@
     "stock": 37,
     "price": 0,
     "description": "Mã: 25631630",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "image": "/images/25631630_1.jpg",
+    "images": [
+      "/images/25631630_1.jpg",
+      "/images/25631630_2.jpg"
+    ],
     "sku": "25631630"
   },
   {
@@ -16,7 +20,7 @@
     "stock": 98,
     "price": 0,
     "description": "Mã: 25631647",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "image": "/images/25631647.png",
     "sku": "25631647"
   },
   {
@@ -26,8 +30,12 @@
     "stock": 43,
     "price": 0,
     "description": "Mã: 25631654",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
-    "sku": "25631654"
+    "image": "/images/25631654_1.jpg",
+    "sku": "25631654",
+    "images": [
+      "/images/25631654_1.jpg",
+      "/images/25631654_2.jpg"
+    ]
   },
   {
     "id": 4,
@@ -36,8 +44,12 @@
     "stock": 91,
     "price": 0,
     "description": "Mã: 25631661",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
-    "sku": "25631661"
+    "image": "/images/25631661_1.jpg",
+    "sku": "25631661",
+    "images": [
+      "/images/25631661_1.jpg",
+      "/images/25631661_2.jpg"
+    ]
   },
   {
     "id": 5,
@@ -46,8 +58,12 @@
     "stock": 100,
     "price": 0,
     "description": "Mã: 25631678",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
-    "sku": "25631678"
+    "image": "/images/25631678_1.jpg",
+    "sku": "25631678",
+    "images": [
+      "/images/25631678_1.jpg",
+      "/images/25631678_2.jpg"
+    ]
   },
   {
     "id": 6,
@@ -56,7 +72,7 @@
     "stock": 104,
     "price": 0,
     "description": "Mã: 25631685",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "image": "/images/25631685.png",
     "sku": "25631685"
   },
   {
@@ -66,8 +82,12 @@
     "stock": 64,
     "price": 0,
     "description": "Mã: 25631692",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
-    "sku": "25631692"
+    "image": "/images/25631692_1.jpg",
+    "sku": "25631692",
+    "images": [
+      "/images/25631692_1.jpg",
+      "/images/25631692_2.jpg"
+    ]
   },
   {
     "id": 8,
@@ -76,7 +96,7 @@
     "stock": 95,
     "price": 0,
     "description": "Mã: 25631708",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "image": "/images/25631708.png",
     "sku": "25631708"
   },
   {
@@ -86,8 +106,12 @@
     "stock": 94,
     "price": 0,
     "description": "Mã: 25631715",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
-    "sku": "25631715"
+    "image": "/images/25631715_1.jpg",
+    "sku": "25631715",
+    "images": [
+      "/images/25631715_1.jpg",
+      "/images/25631715_2.jpg"
+    ]
   },
   {
     "id": 10,
@@ -96,8 +120,12 @@
     "stock": 38,
     "price": 0,
     "description": "Mã: 25631722",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
-    "sku": "25631722"
+    "image": "/images/25631722_1.png",
+    "sku": "25631722",
+    "images": [
+      "/images/25631722_1.png",
+      "/images/25631722_2.png"
+    ]
   },
   {
     "id": 11,
@@ -106,8 +134,12 @@
     "stock": 39,
     "price": 0,
     "description": "Mã: 25631739",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
-    "sku": "25631739"
+    "image": "/images/25631739_1.jpg",
+    "sku": "25631739",
+    "images": [
+      "/images/25631739_1.jpg",
+      "/images/25631739_2.jpg"
+    ]
   },
   {
     "id": 12,
@@ -116,7 +148,7 @@
     "stock": 47,
     "price": 0,
     "description": "Mã: 25631746",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "image": "/images/25631746.png",
     "sku": "25631746"
   },
   {
@@ -126,8 +158,14 @@
     "stock": 66,
     "price": 0,
     "description": "Mã: 25631753",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
-    "sku": "25631753"
+    "image": "/images/25631753_1.jpg",
+    "sku": "25631753",
+    "images": [
+      "/images/25631753_1.jpg",
+      "/images/25631753_2.jpg",
+      "/images/25631753_3.jpg",
+      "/images/25631753_4.jpg"
+    ]
   },
   {
     "id": 14,
@@ -136,8 +174,13 @@
     "stock": 84,
     "price": 0,
     "description": "Mã: 25631760",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
-    "sku": "25631760"
+    "image": "/images/25631760_1.jpg",
+    "sku": "25631760",
+    "images": [
+      "/images/25631760_1.jpg",
+      "/images/25631760_2.jpg",
+      "/images/25631760_3.jpg"
+    ]
   },
   {
     "id": 15,
@@ -146,7 +189,7 @@
     "stock": 85,
     "price": 0,
     "description": "Mã: 25631777",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "image": "/images/25631777.jpg",
     "sku": "25631777"
   },
   {
@@ -156,8 +199,13 @@
     "stock": 75,
     "price": 0,
     "description": "Mã: 25631784",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
-    "sku": "25631784"
+    "image": "/images/25631784_1.png",
+    "sku": "25631784",
+    "images": [
+      "/images/25631784_1.png",
+      "/images/25631784_2.png",
+      "/images/25631784_3.png"
+    ]
   },
   {
     "id": 17,
@@ -166,7 +214,7 @@
     "stock": 83,
     "price": 0,
     "description": "Mã: 25631791",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "image": "/images/25631791.jpg",
     "sku": "25631791"
   },
   {
@@ -176,8 +224,13 @@
     "stock": 90,
     "price": 0,
     "description": "Mã: 25631807",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
-    "sku": "25631807"
+    "image": "/images/25631807_1.jpg",
+    "sku": "25631807",
+    "images": [
+      "/images/25631807_1.jpg",
+      "/images/25631807_2.jpg",
+      "/images/25631807_3.jpg"
+    ]
   },
   {
     "id": 19,
@@ -186,8 +239,12 @@
     "stock": 74,
     "price": 0,
     "description": "Mã: 25631814",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
-    "sku": "25631814"
+    "image": "/images/25631814_1.png",
+    "sku": "25631814",
+    "images": [
+      "/images/25631814_1.png",
+      "/images/25631814_2.png"
+    ]
   },
   {
     "id": 20,
@@ -196,8 +253,12 @@
     "stock": 98,
     "price": 0,
     "description": "Mã: 25631821",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
-    "sku": "25631821"
+    "image": "/images/25631821_1.jpg",
+    "sku": "25631821",
+    "images": [
+      "/images/25631821_1.jpg",
+      "/images/25631821_2.jpg"
+    ]
   },
   {
     "id": 21,
@@ -206,7 +267,7 @@
     "stock": 99,
     "price": 0,
     "description": "Mã: 25631838",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "image": "/images/25631838.png",
     "sku": "25631838"
   },
   {
@@ -216,8 +277,13 @@
     "stock": 97,
     "price": 0,
     "description": "Mã: 25631845",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
-    "sku": "25631845"
+    "image": "/images/25631845_1.jpg",
+    "sku": "25631845",
+    "images": [
+      "/images/25631845_1.jpg",
+      "/images/25631845_2.jpg",
+      "/images/25631845_3.jpg"
+    ]
   },
   {
     "id": 23,
@@ -226,7 +292,7 @@
     "stock": 90,
     "price": 0,
     "description": "Mã: 25631852",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "image": "/images/25631852.jpg",
     "sku": "25631852"
   },
   {
@@ -236,7 +302,7 @@
     "stock": 107,
     "price": 0,
     "description": "Mã: 25631869",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "image": "/images/25631869.jpg",
     "sku": "25631869"
   },
   {
@@ -246,8 +312,13 @@
     "stock": 80,
     "price": 0,
     "description": "Mã: 25631876",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
-    "sku": "25631876"
+    "image": "/images/25631876_1.png",
+    "sku": "25631876",
+    "images": [
+      "/images/25631876_1.png",
+      "/images/25631876_2.png",
+      "/images/25631876_3.png"
+    ]
   },
   {
     "id": 26,
@@ -256,7 +327,7 @@
     "stock": 90,
     "price": 0,
     "description": "Mã: 25631883",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
+    "image": "/images/25631883.jpg",
     "sku": "25631883"
   },
   {
@@ -266,8 +337,13 @@
     "stock": 83,
     "price": 0,
     "description": "Mã: 25631890",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Cellipse cx='100' cy='160' rx='25' ry='8' fill='%23E0E0E0'/%3E%3Cpath d='M75 160 Q75 90 100 80 Q125 90 125 160' fill='%23F0F0F0' stroke='%234A90A4' stroke-width='2'/%3E%3Ccircle cx='100' cy='85' r='3' fill='%23FF6B35'/%3E%3C/svg%3E",
-    "sku": "25631890"
+    "image": "/images/25631890_1.jpg",
+    "sku": "25631890",
+    "images": [
+      "/images/25631890_1.jpg",
+      "/images/25631890_2.jpg",
+      "/images/25631890_3.jpg"
+    ]
   },
   {
     "id": 28,
@@ -276,8 +352,12 @@
     "stock": 81,
     "price": 0,
     "description": "Mã: 8935261208563",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
-    "sku": "8935261208563"
+    "image": "/images/8935261208563_1.jpg",
+    "sku": "8935261208563",
+    "images": [
+      "/images/8935261208563_1.jpg",
+      "/images/8935261208563_2.jpg"
+    ]
   },
   {
     "id": 29,
@@ -286,8 +366,12 @@
     "stock": 81,
     "price": 0,
     "description": "Mã: 8935261208570",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
-    "sku": "8935261208570"
+    "image": "/images/8935261208570_1.jpg",
+    "sku": "8935261208570",
+    "images": [
+      "/images/8935261208570_1.jpg",
+      "/images/8935261208570_2.jpg"
+    ]
   },
   {
     "id": 30,
@@ -296,8 +380,13 @@
     "stock": 78,
     "price": 0,
     "description": "Mã: 8935261208587",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
-    "sku": "8935261208587"
+    "image": "/images/8935261208587_1.jpg",
+    "sku": "8935261208587",
+    "images": [
+      "/images/8935261208587_1.jpg",
+      "/images/8935261208587_2.jpg",
+      "/images/8935261208587_3.jpg"
+    ]
   },
   {
     "id": 31,
@@ -306,8 +395,12 @@
     "stock": 81,
     "price": 0,
     "description": "Mã: 8935261208594",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
-    "sku": "8935261208594"
+    "image": "/images/8935261208594_1.jpg",
+    "sku": "8935261208594",
+    "images": [
+      "/images/8935261208594_1.jpg",
+      "/images/8935261208594_2.jpg"
+    ]
   },
   {
     "id": 32,
@@ -316,7 +409,7 @@
     "stock": 130,
     "price": 0,
     "description": "Mã: 8935261208600",
-    "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23F5F8FA'/%3E%3Crect x='85' y='60' width='30' height='80' fill='%23F4C2A1' stroke='%234A90A4' stroke-width='2'/%3E%3Cellipse cx='100' cy='60' rx='15' ry='8' fill='%23FFD700'/%3E%3Cpath d='M100 52 Q105 45 100 40' stroke='%23FF6B35' stroke-width='2' fill='none'/%3E%3C/svg%3E",
+    "image": "/images/8935261208600.jpg",
     "sku": "8935261208600"
   }
 ]

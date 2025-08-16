@@ -33,54 +33,12 @@
             line-height: 1.5;
         }
         
-        /* Pinterest-style Header */
-        .pinterest-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--pinterest-white);
-            border-bottom: 1px solid var(--pinterest-light-gray);
-            z-index: 1000;
-            padding: 12px 16px;
-        }
-        
-        .search-container {
-            position: relative;
-            flex: 1;
-            max-width: 600px;
-            margin: 0 16px;
-        }
-        
-        .search-input {
-            width: 100%;
-            padding: 12px 16px 12px 48px;
-            border: none;
-            border-radius: 24px;
-            background: var(--pinterest-light-gray);
-            font-size: 16px;
-            outline: none;
-            transition: all 0.2s ease;
-        }
-        
-        .search-input:focus {
-            background: var(--pinterest-white);
-            box-shadow: 0 0 0 4px rgba(230, 0, 35, 0.1);
-        }
-        
-        .search-icon {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--pinterest-gray);
-            font-size: 18px;
-        }
+
         
         /* Pinterest Masonry Grid */
         .masonry-container {
-            margin-top: 80px;
-            padding: 0 4px;
+            margin-top: 120px;
+            padding: 16px 4px;
         }
         
         .masonry-grid {
@@ -129,13 +87,16 @@
             overflow: hidden;
             background: var(--pinterest-white);
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             box-shadow: var(--shadow-pinterest);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
         }
-        
+
         .pin-card:hover {
-            transform: scale(1.02);
+            transform: scale(1.02) translateY(-4px);
             box-shadow: var(--shadow-hover);
         }
         
@@ -166,6 +127,112 @@
             opacity: 1;
         }
         
+        /* Image Carousel for Multiple Images */
+        .pin-image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+        
+        .pin-image-slider {
+            display: flex;
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .pin-image-slide {
+            flex: 0 0 100%;
+            position: relative;
+        }
+        
+        .pin-image-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Image Navigation Arrows */
+        .pin-nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.9);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.2s ease;
+            font-size: 14px;
+            color: var(--pinterest-dark);
+            z-index: 10;
+        }
+        
+        .pin-nav-arrow:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .pin-nav-arrow.prev {
+            left: 8px;
+        }
+        
+        .pin-nav-arrow.next {
+            right: 8px;
+        }
+        
+        .pin-card:hover .pin-nav-arrow {
+            opacity: 1;
+        }
+        
+        /* Image Dots Indicator */
+        .pin-dots {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 4px;
+            z-index: 10;
+        }
+        
+        .pin-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.6);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .pin-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        
+        .pin-dot:hover {
+            background: white;
+        }
+        
+        /* Image Counter */
+        .pin-image-count {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            z-index: 10;
+        }
+        
         .pin-actions {
             display: flex;
             gap: 8px;
@@ -188,8 +255,22 @@
         }
         
         .pin-btn.save {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--pinterest-black);
+        }
+
+        .pin-btn.save:hover {
             background: var(--pinterest-red);
-            color: var(--pinterest-white);
+            color: white;
+        }
+
+        .pin-btn.save.saved {
+            background: var(--pinterest-red);
+            color: white;
+        }
+
+        .pin-btn.save.saved:hover {
+            background: #c41e3a;
         }
         
         .pin-info {
@@ -232,36 +313,74 @@
             right: 0;
             background: var(--pinterest-white);
             border-top: 1px solid var(--pinterest-light-gray);
-            padding: 8px 0;
+            padding: 12px 0 8px 0;
             display: flex;
             justify-content: space-around;
             z-index: 1000;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
         @media (min-width: 768px) {
             .mobile-nav {
                 display: none;
             }
         }
-        
+
         .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 8px;
+            padding: 8px 12px;
             color: var(--pinterest-gray);
             text-decoration: none;
-            font-size: 12px;
-            transition: all 0.2s ease;
+            font-size: 11px;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 0;
+            height: 100%;
+            background: rgba(230, 0, 35, 0.1);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 12px;
+        }
+
+        .nav-item:hover::before {
+            width: 100%;
+        }
+
+        .nav-item:hover {
+            color: var(--pinterest-red);
+            transform: translateY(-2px);
+        }
+
         .nav-item.active {
-            color: var(--pinterest-dark);
+            color: var(--pinterest-red);
+            background: rgba(230, 0, 35, 0.1);
         }
-        
+
+        .nav-item.active::before {
+            width: 100%;
+        }
+
         .nav-item i {
-            font-size: 20px;
+            font-size: 22px;
             margin-bottom: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:active {
+            transform: translateY(0) scale(0.95);
+            transition: all 0.1s ease;
         }
         
         /* Loading Animation */
@@ -315,10 +434,6 @@
         }
 
         /* Smooth animations */
-        .pin-card {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -331,12 +446,16 @@
         }
 
         /* Staggered animation for cards */
-        .pin-card:nth-child(1) { animation-delay: 0.1s; }
-        .pin-card:nth-child(2) { animation-delay: 0.2s; }
-        .pin-card:nth-child(3) { animation-delay: 0.3s; }
-        .pin-card:nth-child(4) { animation-delay: 0.4s; }
-        .pin-card:nth-child(5) { animation-delay: 0.5s; }
-        .pin-card:nth-child(6) { animation-delay: 0.6s; }
+        .pin-card:nth-child(1) { animation-delay: 0.05s; }
+        .pin-card:nth-child(2) { animation-delay: 0.1s; }
+        .pin-card:nth-child(3) { animation-delay: 0.15s; }
+        .pin-card:nth-child(4) { animation-delay: 0.2s; }
+        .pin-card:nth-child(5) { animation-delay: 0.25s; }
+        .pin-card:nth-child(6) { animation-delay: 0.3s; }
+        .pin-card:nth-child(7) { animation-delay: 0.35s; }
+        .pin-card:nth-child(8) { animation-delay: 0.4s; }
+        .pin-card:nth-child(9) { animation-delay: 0.45s; }
+        .pin-card:nth-child(10) { animation-delay: 0.5s; }
 
         /* Modal animations */
         #productModal, #uploadModal {
@@ -357,7 +476,7 @@
         /* iOS-style pull to refresh indicator */
         .pull-to-refresh {
             position: fixed;
-            top: 80px;
+            top: 130px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--pinterest-white);
@@ -374,9 +493,439 @@
             transform: translateX(-50%) translateY(10px);
         }
 
+        /* Top Navigation with Search and Category Tabs */
+        .category-tabs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--pinterest-white);
+            z-index: 1000;
+            border-bottom: 1px solid var(--pinterest-light-gray);
+            padding: 12px 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-container {
+            position: relative;
+            margin-bottom: 12px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px 12px 48px;
+            border: none;
+            border-radius: 24px;
+            background: var(--pinterest-light-gray);
+            font-size: 16px;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .search-input:focus {
+            background: var(--pinterest-white);
+            box-shadow: 0 0 0 3px rgba(230, 0, 35, 0.1), 0 4px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--pinterest-gray);
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .search-input:focus + .search-icon {
+            color: var(--pinterest-red);
+        }
+
+        .category-tabs-container {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 0;
+        }
+
+        .category-tabs-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-tab {
+            flex-shrink: 0;
+            background: var(--pinterest-light-gray);
+            border: none;
+            border-radius: 20px;
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--pinterest-dark-gray);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .category-tab:hover::before {
+            left: 100%;
+        }
+
+        .category-tab:hover {
+            background: var(--pinterest-gray);
+            color: var(--pinterest-black);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-tab.active {
+            background: var(--pinterest-red);
+            color: var(--pinterest-white);
+            box-shadow: 0 4px 16px rgba(230, 0, 35, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .category-tab.active:hover {
+            background: #c41e3a;
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .category-tab:active {
+            transform: translateY(0) scale(0.98);
+            transition: all 0.1s ease;
+        }
+
+        /* Ripple effect for buttons */
+        @keyframes ripple {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+        }
+
+        /* Empty Saved State */
+        .empty-saved-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+            min-height: 50vh;
+            color: var(--pinterest-dark-gray);
+        }
+
+        .empty-icon {
+            font-size: 80px;
+            color: var(--pinterest-light-gray);
+            margin-bottom: 24px;
+            animation: pulse 2s infinite;
+        }
+
+        .empty-saved-state h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--pinterest-black);
+            margin-bottom: 12px;
+        }
+
+        .empty-saved-state p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 32px;
+            max-width: 300px;
+        }
+
+        .back-to-home-btn {
+            background: var(--pinterest-red);
+            color: white;
+            border: none;
+            border-radius: 24px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-to-home-btn:hover {
+            background: #c41e3a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(230, 0, 35, 0.3);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Statistics Page */
+        .stats-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--pinterest-white);
+            z-index: 200;
+            overflow-y: auto;
+            padding-top: 120px;
+            padding-bottom: 80px;
+        }
+
+        .stats-page.hidden {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+        }
+
+        .stats-page {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .stats-page:not(.hidden) {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .stats-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .stats-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--pinterest-black);
+            margin-bottom: 8px;
+        }
+
+        .stats-subtitle {
+            color: var(--pinterest-dark-gray);
+            font-size: 16px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .stats-card {
+            background: var(--pinterest-white);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--pinterest-light-gray);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .stats-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .stats-card-header h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--pinterest-black);
+            margin-bottom: 16px;
+        }
+
+        .stats-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--pinterest-red);
+            margin-bottom: 4px;
+        }
+
+        .stats-label {
+            font-size: 14px;
+            color: var(--pinterest-dark-gray);
+        }
+
+        .category-chart {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .category-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            background: var(--pinterest-light-gray);
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .category-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .low-stock-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .low-stock-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 12px;
+        }
+
+        .low-stock-item img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .low-stock-info {
+            flex: 1;
+        }
+
+        .low-stock-name {
+            font-weight: 600;
+            color: var(--pinterest-black);
+            margin-bottom: 4px;
+        }
+
+        .low-stock-quantity {
+            font-size: 14px;
+            color: #dc2626;
+            font-weight: 500;
+        }
+
+        .popular-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .popular-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: var(--pinterest-light-gray);
+            border-radius: 12px;
+            transition: background 0.2s ease;
+        }
+
+        .popular-item:hover {
+            background: var(--pinterest-gray);
+        }
+
+        .popular-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .popular-info {
+            flex: 1;
+        }
+
+        .popular-name {
+            font-weight: 600;
+            color: var(--pinterest-black);
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .popular-saves {
+            font-size: 12px;
+            color: var(--pinterest-dark-gray);
+        }
+
+        /* Mobile responsive for stats */
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .stats-card {
+                padding: 20px;
+            }
+
+            .stats-number {
+                font-size: 28px;
+            }
+
+            .category-chart {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .popular-products {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Enhanced mobile experience */
         @media (max-width: 640px) {
-            .pinterest-header {
+            .category-tabs {
                 padding: 8px 12px;
             }
 
@@ -385,8 +934,19 @@
                 padding: 10px 12px 10px 40px;
             }
 
+            .search-icon {
+                left: 12px;
+                font-size: 16px;
+            }
+
+            .category-tab {
+                padding: 8px 14px;
+                font-size: 13px;
+                min-height: 36px;
+            }
+
             .masonry-container {
-                margin-top: 70px;
+                margin-top: 110px;
                 padding-bottom: 80px; /* Space for mobile nav */
             }
 
@@ -402,35 +962,254 @@
                 font-size: 18px;
             }
         }
+
+        /* Hide edit buttons - can be easily restored when needed */
+        .pin-btn:has(i.fa-camera),
+        .pin-btn[onclick*="openUploadModal"],
+        #modalEditBtn,
+        #fabUpload {
+            display: none !important;
+        }
+
+        /* Alternative selector for better compatibility */
+        button[onclick*="openUploadModal"],
+        button:has(.fa-camera) {
+            display: none !important;
+        }
+
+        /* Enhanced Modal Navigation */
+        #modalImageContainer:hover #modalPrevBtn,
+        #modalImageContainer:hover #modalNextBtn {
+            opacity: 1;
+        }
+
+        /* Compact Modal Styling */
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Modal Save Button States */
+        #modalSaveBtn.saved {
+            background: rgba(239, 68, 68, 0.9) !important;
+            color: white !important;
+        }
+
+        #modalSaveBtn.saved:hover {
+            background: rgba(220, 38, 38, 0.95) !important;
+        }
+
+        @media (max-width: 768px) {
+            #modalPrevBtn,
+            #modalNextBtn {
+                opacity: 1;
+                width: 32px;
+                height: 32px;
+                font-size: 12px;
+            }
+
+            #modalThumbnails {
+                padding: 8px 12px;
+                gap: 6px;
+            }
+
+            #modalThumbnails > div {
+                width: 40px;
+                height: 40px;
+                flex-shrink: 0;
+            }
+
+            #productModal .bg-white.rounded-xl {
+                max-width: 98vw;
+                margin: 2px;
+                max-h-[98vh];
+            }
+
+            #modalImageContainer {
+                height: 60vh !important; /* Use viewport height for better mobile experience */
+            }
+
+            .p-4.space-y-3 {
+                padding: 12px;
+            }
+
+            #modalTitle {
+                font-size: 16px;
+                line-height: 1.3;
+            }
+
+            .flex.items-center.justify-between {
+                gap: 8px;
+            }
+
+            .flex.items-center.gap-3 {
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #productModal .bg-white.rounded-xl {
+                max-width: 99vw;
+                margin: 1px;
+                max-h-[99vh];
+            }
+
+            #modalImageContainer {
+                height: 55vh !important; /* Larger image on small mobile */
+            }
+
+            .p-4.space-y-3 {
+                padding: 8px;
+                gap: 6px;
+            }
+
+            .flex.items-center.justify-between {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }
+
+            #modalDescription {
+                font-size: 12px;
+                padding: 6px;
+            }
+
+            /* Smaller thumbnails on very small screens */
+            #modalThumbnails {
+                padding: 6px 8px !important;
+            }
+
+            #modalThumbnails > div {
+                width: 36px !important;
+                height: 36px !important;
+            }
+
+            /* Smaller navigation arrows */
+            #modalPrevBtn,
+            #modalNextBtn {
+                width: 28px !important;
+                height: 28px !important;
+                font-size: 10px !important;
+            }
+        }
+
+        /* High z-index override for modal */
+        #productModal {
+            z-index: 99999 !important;
+        }
+
+        /* Ensure modal is above all navigation elements */
+        @media (max-width: 768px) {
+            #productModal {
+                z-index: 99999 !important;
+            }
+            
+            .mobile-nav {
+                z-index: 1000;
+            }
+            
+            .category-tabs {
+                z-index: 1000;
+            }
+        }
+
+        /* Improved touch/swipe experience */
+        #modalImageSlider {
+            touch-action: pan-x;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        #modalImageSlider img {
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Large desktop optimization */
+        @media (min-width: 1024px) {
+            #productModal .bg-white.rounded-xl {
+                max-width: 56rem; /* Larger on big screens (4xl = 56rem) */
+            }
+
+            #modalImageContainer {
+                height: 32rem; /* Even taller on desktop */
+            }
+        }
+
+        @media (min-width: 1280px) {
+            #modalImageContainer {
+                height: 36rem; /* Maximum height for very large screens */
+            }
+        }
+
+        /* Aspect ratio preservation */
+        .flex-shrink-0.w-full.h-full.relative img {
+            object-fit: contain !important;
+            object-position: center;
+            background-color: #f3f4f6;
+        }
+
+        /* Send to Sales Button Animations */
+        #sendToSalesBtn {
+            animation: pulseButton 2s infinite;
+        }
+
+        @keyframes pulseButton {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        #sendToSalesBtn:hover {
+            animation: none;
+        }
+
+        /* Mobile responsive for Send to Sales */
+        @media (max-width: 768px) {
+            #sendToSalesSection {
+                padding: 0 12px;
+                margin-bottom: 16px;
+            }
+
+            #sendToSalesBtn {
+                font-size: 14px;
+                padding: 12px 16px;
+            }
+
+            #savedCount {
+                font-size: 11px;
+                padding: 2px 6px;
+            }
+        }
+
+        /* Modal responsive improvements */
+        @media (max-width: 480px) {
+            #sendToSalesModal .bg-white.rounded-2xl,
+            #previewModal .bg-white.rounded-2xl {
+                max-width: 95vw;
+                margin: 8px;
+            }
+
+            .p-6.space-y-4 {
+                padding: 16px;
+                gap: 12px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Pinterest-style Header -->
-    <header class="pinterest-header">
-        <div class="flex items-center">
-            <!-- Logo -->
-            <div class="flex items-center">
-                <i class="fas fa-boxes text-2xl text-red-600 mr-2"></i>
-                <span class="font-bold text-lg hidden sm:block">Inventory</span>
-            </div>
-            
-            <!-- Search Bar -->
-            <div class="search-container">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" id="searchInput" class="search-input" placeholder="Tìm kiếm sản phẩm...">
-            </div>
-            
-            <!-- Desktop Actions -->
-            <div class="hidden md:flex items-center gap-3">
-                <button id="uploadBtn" class="pin-btn">
-                    <i class="fas fa-plus mr-2"></i>Upload
-                </button>
-                <button id="syncBtn" class="pin-btn">
-                    <i class="fas fa-sync-alt mr-2"></i>Sync
-                </button>
-            </div>
-        </div>
-    </header>
+
 
     <!-- Pull to Refresh Indicator -->
     <div id="pullToRefresh" class="pull-to-refresh">
@@ -440,8 +1219,42 @@
         </div>
     </div>
 
+    <!-- Top Navigation with Search and Category Tabs -->
+    <div class="category-tabs">
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Tìm kiếm sản phẩm...">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="category-tabs-container">
+            <button class="category-tab active" data-category="all">
+                <span>🏠 Tất cả</span>
+            </button>
+            <button class="category-tab" data-category="Bình để nến">
+                <span>🕯️ Bình để nến</span>
+            </button>
+            <button class="category-tab" data-category="Bình xông đốt tinh dầu">
+                <span>🌸 Bình Đốt Tinh Dầu</span>
+            </button>
+            <button class="category-tab" data-category="Cốc nến thơm">
+                <span>☕ Cốc Sứ Deco</span>
+            </button>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <main class="masonry-container">
+        <!-- Send to Sales Button (Hidden by default, shown in saved tab) -->
+        <div id="sendToSalesSection" class="hidden mb-4 px-4">
+            <button id="sendToSalesBtn" class="w-full md:w-auto mx-auto flex items-center justify-center gap-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                <i class="fas fa-paper-plane text-sm"></i>
+                <span>Gửi cho Sale</span>
+                <span id="savedCount" class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">0</span>
+            </button>
+        </div>
+
         <!-- Loading Indicator -->
         <div id="loadingIndicator" class="text-center py-8 hidden">
             <div class="loading-spinner mx-auto mb-2"></div>
@@ -459,70 +1272,159 @@
         </div>
     </main>
 
+    <!-- Statistics Page - Hidden -->
+    <div id="statsPage" class="stats-page hidden" style="display: none;">
+        <div class="stats-container">
+            <div class="stats-header">
+                <h2>📊 Thống kê tồn kho</h2>
+                <p class="stats-subtitle">Tổng quan về kho hàng của bạn</p>
+            </div>
+
+            <div class="stats-grid">
+                <!-- Overview Cards -->
+                <div class="stats-card">
+                    <div class="stats-card-header">
+                        <h3>📦 Tổng sản phẩm</h3>
+                    </div>
+                    <div class="stats-number" id="totalProducts">0</div>
+                    <div class="stats-label">sản phẩm</div>
+                </div>
+
+                <div class="stats-card">
+                    <div class="stats-card-header">
+                        <h3>💰 Tổng giá trị</h3>
+                    </div>
+                    <div class="stats-number" id="totalValue">0</div>
+                    <div class="stats-label">VNĐ</div>
+                </div>
+
+                <div class="stats-card">
+                    <div class="stats-card-header">
+                        <h3>❤️ Đã lưu</h3>
+                    </div>
+                    <div class="stats-number" id="savedProducts">0</div>
+                    <div class="stats-label">sản phẩm</div>
+                </div>
+
+                <!-- Category Distribution -->
+                <div class="stats-card full-width">
+                    <div class="stats-card-header">
+                        <h3>📊 Phân bố theo danh mục</h3>
+                    </div>
+                    <div id="categoryChart" class="category-chart"></div>
+                </div>
+
+                <!-- Low Stock Alert -->
+                <div class="stats-card full-width">
+                    <div class="stats-card-header">
+                        <h3>⚠️ Cảnh báo tồn kho thấp</h3>
+                    </div>
+                    <div id="lowStockList" class="low-stock-list"></div>
+                </div>
+
+                <!-- Popular Products -->
+                <div class="stats-card full-width">
+                    <div class="stats-card-header">
+                        <h3>🔥 Sản phẩm được lưu nhiều nhất</h3>
+                    </div>
+                    <div id="popularProducts" class="popular-products"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Mobile Navigation -->
     <nav class="mobile-nav">
-        <a href="#" class="nav-item active">
+        <a href="#" class="nav-item active" data-tab="home">
             <i class="fas fa-home"></i>
             <span>Trang chủ</span>
         </a>
-        <a href="#" class="nav-item">
+        <a href="#" class="nav-item" data-tab="search">
             <i class="fas fa-search"></i>
             <span>Tìm kiếm</span>
         </a>
-        <a href="#" class="nav-item">
-            <i class="fas fa-plus"></i>
-            <span>Thêm</span>
-        </a>
-        <a href="#" class="nav-item">
-            <i class="fas fa-chart-bar"></i>
-            <span>Thống kê</span>
+        <a href="#" class="nav-item" data-tab="saved">
+            <i class="fas fa-heart"></i>
+            <span>Đã lưu</span>
         </a>
     </nav>
 
-    <!-- Floating Action Button -->
-    <button class="fab" id="fabUpload">
+    <!-- Floating Action Button - Hidden -->
+    <button class="fab" id="fabUpload" style="display: none;">
         <i class="fas fa-camera"></i>
     </button>
 
     <!-- Product Detail Modal -->
-    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-hidden">
-            <!-- Modal Header -->
+    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-60 hidden z-[9999] flex items-center justify-center p-1 md:p-3">
+        <div class="bg-white rounded-xl max-w-3xl w-full max-h-[96vh] overflow-hidden shadow-2xl relative">
+            <!-- Close Button -->
+            <button id="closeModal" class="absolute top-3 right-3 w-8 h-8 bg-black bg-opacity-60 hover:bg-opacity-80 text-white rounded-full flex items-center justify-center transition-all z-30">
+                <i class="fas fa-times text-sm"></i>
+            </button>
+            
+            <!-- Image Section (Priority Focus) -->
             <div class="relative">
-                <img id="modalImage" src="" alt="" class="w-full h-64 object-cover">
-                <button id="closeModal" class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg">
-                    <i class="fas fa-times text-gray-600"></i>
-                </button>
-                <div class="absolute bottom-4 right-4 flex gap-2">
-                    <button id="modalEditBtn" class="pin-btn">
-                        <i class="fas fa-camera mr-1"></i>Sửa ảnh
+                <div id="modalImageContainer" class="relative w-full h-80 md:h-96 lg:h-[28rem] bg-gray-100 overflow-hidden">
+                    <!-- Image Gallery -->
+                    <div id="modalImageSlider" class="flex transition-transform duration-300 ease-in-out h-full">
+                        <!-- Images will be dynamically inserted here -->
+                    </div>
+                    
+                    <!-- Navigation Arrows -->
+                    <button id="modalPrevBtn" class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full w-8 h-8 flex items-center justify-center shadow transition-all opacity-0 hover:opacity-100 z-20">
+                        <i class="fas fa-chevron-left text-gray-700 text-sm"></i>
                     </button>
-                    <button id="modalSaveBtn" class="pin-btn save">
-                        <i class="fas fa-heart mr-1"></i>Lưu
+                    <button id="modalNextBtn" class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full w-8 h-8 flex items-center justify-center shadow transition-all opacity-0 hover:opacity-100 z-20">
+                        <i class="fas fa-chevron-right text-gray-700 text-sm"></i>
                     </button>
+                    
+                    <!-- Image Counter -->
+                    <div id="modalImageCounter" class="absolute top-2 left-2 bg-black bg-opacity-60 text-white px-2 py-1 rounded text-xs font-medium">
+                        1 / 1
+                    </div>
+                    
+                    <!-- Save Button -->
+                    <div class="absolute bottom-2 right-2 z-20">
+                        <button id="modalSaveBtn" class="bg-white bg-opacity-90 hover:bg-opacity-100 text-gray-800 px-3 py-1.5 rounded-full text-sm font-medium transition-all shadow">
+                            <i class="fas fa-heart mr-1"></i>Lưu
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Compact Thumbnail Strip -->
+                <div id="modalThumbnails" class="flex gap-1.5 p-2 bg-gray-50 overflow-x-auto scrollbar-hide">
+                    <!-- Thumbnails will be dynamically inserted here -->
                 </div>
             </div>
 
-            <!-- Modal Content -->
-            <div class="p-6">
-                <h2 id="modalTitle" class="text-xl font-bold mb-2"></h2>
-                <div class="flex items-center gap-4 mb-4">
-                    <span id="modalCategory" class="px-3 py-1 bg-gray-100 rounded-full text-sm"></span>
-                    <span id="modalSku" class="text-gray-500 text-sm font-mono"></span>
+            <!-- Compact Product Info -->
+            <div class="p-4 space-y-3">
+                <!-- Product Name -->
+                <h2 id="modalTitle" class="text-lg md:text-xl font-bold text-gray-900 leading-tight"></h2>
+                
+                <!-- Compact Info Row -->
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                    <!-- Left: Category & SKU -->
+                    <div class="flex items-center gap-2 text-sm">
+                        <span id="modalCategory" class="px-2 py-1 bg-gray-100 rounded text-xs font-medium"></span>
+                        <span id="modalSku" class="text-gray-500 font-mono text-xs"></span>
+                    </div>
+                    
+                    <!-- Right: Stock & Price -->
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center gap-1 text-blue-600">
+                            <i class="fas fa-boxes text-sm"></i>
+                            <span id="modalStock" class="font-bold text-sm"></span>
+                        </div>
+                        <div class="flex items-center gap-1 text-green-600">
+                            <i class="fas fa-tag text-sm"></i>
+                            <span id="modalPrice" class="font-bold text-sm"></span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4 mb-4">
-                    <div class="text-center p-4 bg-gray-50 rounded-lg">
-                        <div id="modalStock" class="text-2xl font-bold text-blue-600"></div>
-                        <div class="text-sm text-gray-600">Tồn kho</div>
-                    </div>
-                    <div class="text-center p-4 bg-gray-50 rounded-lg">
-                        <div id="modalPrice" class="text-2xl font-bold text-green-600"></div>
-                        <div class="text-sm text-gray-600">Giá</div>
-                    </div>
-                </div>
-
-                <div id="modalDescription" class="text-gray-700 text-sm"></div>
+                <!-- Description (Compact) -->
+                <div id="modalDescription" class="text-gray-600 text-sm bg-gray-50 p-2 rounded text-center"></div>
             </div>
         </div>
     </div>
@@ -566,29 +1468,29 @@
                         Chọn hình ảnh:
                     </label>
                     <div class="relative">
-                        <input type="file" id="imageFile" accept="image/*" class="hidden">
+                        <input type="file" id="imageFile" accept="image/*" multiple class="hidden">
                         <button onclick="document.getElementById('imageFile').click()"
                                 class="w-full border-2 border-dashed border-gray-300 rounded-lg px-4 py-8 text-center hover:border-red-500 hover:bg-red-50 transition-colors">
                             <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"></i>
                             <p class="text-gray-600 font-medium">Click để chọn ảnh</p>
-                            <p class="text-gray-400 text-sm">JPG, PNG, WebP (tối đa 50MB)</p>
+                            <p class="text-gray-400 text-sm">JPG, PNG, WebP • Chọn nhiều ảnh (Ctrl+Click)</p>
                         </button>
                     </div>
                 </div>
 
-                <!-- Image Preview -->
+                <!-- Multiple Images Preview -->
                 <div class="mb-6 hidden" id="imagePreview">
                     <label class="block text-sm font-semibold text-gray-700 mb-2">
                         <i class="fas fa-eye mr-1"></i>
                         Xem trước:
                     </label>
-                    <div class="relative">
-                        <img id="previewImg" class="w-full h-48 object-cover rounded-lg border-2 border-gray-200">
-                        <button onclick="document.getElementById('imageFile').value=''; document.getElementById('imagePreview').classList.add('hidden');"
-                                class="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center">
-                            <i class="fas fa-times text-sm"></i>
-                        </button>
+                    <div id="previewContainer" class="grid grid-cols-2 gap-3">
+                        <!-- Preview images will be inserted here -->
                     </div>
+                    <button onclick="window.app.clearImagePreviews()" 
+                            class="mt-3 text-red-500 hover:text-red-600 text-sm font-medium">
+                        <i class="fas fa-times mr-1"></i>Xóa tất cả
+                    </button>
                 </div>
 
                 <!-- Action Buttons -->
@@ -606,6 +1508,116 @@
         </div>
     </div>
 
+    <!-- Send to Sales Modal -->
+    <div id="sendToSalesModal" class="fixed inset-0 bg-black bg-opacity-60 hidden z-[9999] flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-hidden shadow-2xl relative">
+            <!-- Modal Header -->
+            <div class="bg-gradient-to-r from-red-500 to-red-600 text-white p-6 rounded-t-2xl">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h3 class="text-xl font-bold flex items-center gap-2">
+                            <i class="fas fa-paper-plane"></i>
+                            Gửi cho Sale
+                        </h3>
+                        <p class="text-red-100 text-sm mt-1">Chia sẻ danh sách sản phẩm đã lưu</p>
+                    </div>
+                    <button id="closeSendToSalesModal" class="text-white hover:text-red-200 text-xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 space-y-4">
+                <!-- Product Count Summary -->
+                <div class="bg-gray-50 p-4 rounded-lg text-center">
+                    <h4 class="font-semibold text-gray-800 mb-1">Sản phẩm đã chọn</h4>
+                    <p class="text-2xl font-bold text-red-600" id="modalSavedCount">0 sản phẩm</p>
+                </div>
+
+                <!-- Sharing Options -->
+                <div class="space-y-3">
+                    <h5 class="font-semibold text-gray-800 mb-3">Chọn phương thức chia sẻ:</h5>
+                    
+                    <!-- Excel Export -->
+                    <button id="exportExcelBtn" class="w-full flex items-center gap-3 p-4 border-2 border-gray-200 hover:border-green-500 hover:bg-green-50 rounded-xl transition-all group">
+                        <div class="w-12 h-12 bg-green-100 group-hover:bg-green-200 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-file-excel text-green-600 text-xl"></i>
+                        </div>
+                        <div class="text-left">
+                            <h6 class="font-semibold text-gray-800">Xuất Excel</h6>
+                            <p class="text-sm text-gray-600">Tải file Excel với định dạng đẹp</p>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-400 group-hover:text-green-500 ml-auto"></i>
+                    </button>
+
+                    <!-- Copy to Clipboard -->
+                    <button id="copyToClipboardBtn" class="w-full flex items-center gap-3 p-4 border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 rounded-xl transition-all group">
+                        <div class="w-12 h-12 bg-blue-100 group-hover:bg-blue-200 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-copy text-blue-600 text-xl"></i>
+                        </div>
+                        <div class="text-left">
+                            <h6 class="font-semibold text-gray-800">Sao chép Text</h6>
+                            <p class="text-sm text-gray-600">Copy để paste vào Zalo, email</p>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-400 group-hover:text-blue-500 ml-auto"></i>
+                    </button>
+
+                    <!-- Preview Option -->
+                    <button id="previewBtn" class="w-full flex items-center gap-3 p-4 border-2 border-gray-200 hover:border-purple-500 hover:bg-purple-50 rounded-xl transition-all group">
+                        <div class="w-12 h-12 bg-purple-100 group-hover:bg-purple-200 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-eye text-purple-600 text-xl"></i>
+                        </div>
+                        <div class="text-left">
+                            <h6 class="font-semibold text-gray-800">Xem trước</h6>
+                            <p class="text-sm text-gray-600">Preview nội dung trước khi gửi</p>
+                        </div>
+                        <i class="fas fa-chevron-right text-gray-400 group-hover:text-purple-500 ml-auto"></i>
+                    </button>
+                </div>
+
+                <!-- Loading State -->
+                <div id="sendToSalesLoading" class="hidden text-center py-8">
+                    <div class="loading-spinner mx-auto mb-2"></div>
+                    <p class="text-gray-600">Đang xử lý...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="previewModal" class="fixed inset-0 bg-black bg-opacity-60 hidden z-[9999] flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl relative">
+            <!-- Preview Header -->
+            <div class="bg-gray-100 p-4 border-b flex justify-between items-center">
+                <h3 class="text-lg font-bold text-gray-800">
+                    <i class="fas fa-eye mr-2"></i>
+                    Xem trước danh sách
+                </h3>
+                <button id="closePreviewModal" class="text-gray-500 hover:text-gray-700 text-xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Preview Content -->
+            <div id="previewContent" class="p-6 max-h-96 overflow-y-auto">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+
+            <!-- Preview Actions -->
+            <div class="p-4 border-t bg-gray-50 flex gap-3 justify-end">
+                <button id="previewCopyBtn" class="flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-all">
+                    <i class="fas fa-copy"></i>
+                    Copy Text
+                </button>
+                <button id="previewExportBtn" class="flex items-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-all">
+                    <i class="fas fa-file-excel"></i>
+                    Export Excel
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Pinterest-style Inventory App
         class PinterestInventoryApp {
@@ -615,6 +1627,9 @@
                 this.currentPage = 0;
                 this.itemsPerPage = 20;
                 this.isLoading = false;
+                this.currentCategory = 'all';
+                this.savedProducts = new Set(JSON.parse(localStorage.getItem('savedProducts') || '[]'));
+                this.currentTab = 'home';
                 this.searchTerm = '';
                 this.supabaseManager = null;
 
@@ -638,6 +1653,13 @@
 
                 // Setup pull to refresh
                 this.setupPullToRefresh();
+
+                // Restore saved category
+                const savedCategory = localStorage.getItem('selectedCategory') || 'all';
+                this.setActiveCategory(savedCategory);
+
+                // Re-render products to show correct saved states
+                this.filterProducts();
 
                 console.log('✅ App initialized successfully');
             }
@@ -729,24 +1751,77 @@
             createPinCard(product) {
                 const card = document.createElement('div');
                 card.className = 'pin-card';
+                card.dataset.sku = product.sku;
                 card.onclick = () => this.showProductModal(product);
 
                 // Random height for masonry effect
                 const heights = [200, 250, 300, 350, 400, 450];
                 const randomHeight = heights[Math.floor(Math.random() * heights.length)];
 
-                card.innerHTML = `
-                    <div class="relative">
-                        <img src="${product.image}"
+                const isSaved = this.savedProducts.has(product.sku);
+                const heartIcon = isSaved ? 'fas fa-heart' : 'far fa-heart';
+                const saveText = isSaved ? 'Đã lưu' : 'Lưu';
+
+                // Handle multiple images
+                const images = this.getProductImages(product);
+                const hasMultipleImages = images.length > 1;
+
+                let imageHTML = '';
+                if (hasMultipleImages) {
+                    // Multiple images carousel
+                    imageHTML = `
+                        <div class="pin-image-container" style="height: ${randomHeight}px;">
+                            <div class="pin-image-slider" data-current="0">
+                                ${images.map((img, index) => `
+                                    <div class="pin-image-slide">
+                                        <img src="${img}" 
+                                             alt="${product.name}"
+                                             loading="lazy"
+                                             onerror="this.src='https://via.placeholder.com/300x${randomHeight}?text=No+Image'">
+                                    </div>
+                                `).join('')}
+                            </div>
+                            
+                            ${images.length > 1 ? `
+                                <button class="pin-nav-arrow prev" onclick="event.stopPropagation(); window.app.prevImage(this)">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button class="pin-nav-arrow next" onclick="event.stopPropagation(); window.app.nextImage(this)">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                                
+                                <div class="pin-dots">
+                                    ${images.map((_, index) => `
+                                        <div class="pin-dot ${index === 0 ? 'active' : ''}" 
+                                             onclick="event.stopPropagation(); window.app.goToImage(this, ${index})"></div>
+                                    `).join('')}
+                                </div>
+                                
+                                <div class="pin-image-count">${images.length} ảnh</div>
+                            ` : ''}
+                        </div>
+                    `;
+                } else {
+                    // Single image
+                    imageHTML = `
+                        <img src="${images[0]}"
                              alt="${product.name}"
                              class="pin-image"
                              style="height: ${randomHeight}px; object-fit: cover;"
-                             loading="lazy">
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/300x${randomHeight}?text=No+Image'">
+                    `;
+                }
+
+                card.innerHTML = `
+                    <div class="relative">
+                        ${imageHTML}
 
                         <div class="pin-overlay">
                             <div class="pin-actions">
-                                <button class="pin-btn save" onclick="event.stopPropagation(); window.app.saveProduct('${product.sku}')">
-                                    <i class="fas fa-heart mr-1"></i>Lưu
+                                <button class="pin-btn save heart-icon ${isSaved ? 'saved' : ''}"
+                                        onclick="event.stopPropagation(); window.app.toggleSaveProduct('${product.sku}')">
+                                    <i class="${heartIcon} mr-1"></i>${saveText}
                                 </button>
                                 <button class="pin-btn" onclick="event.stopPropagation(); window.app.openUploadModal('${product.sku}')">
                                     <i class="fas fa-camera mr-1"></i>Sửa
@@ -758,7 +1833,7 @@
                             <div class="pin-title">${product.name}</div>
                             <div class="pin-meta">
                                 <span>${product.category}</span>
-                                <span class="font-bold">SL: ${product.stock}</span>
+                                <span class="font-bold">SL: ${product.quantity || product.stock || 0}</span>
                             </div>
                         </div>
                     </div>
@@ -775,12 +1850,26 @@
                     this.filterProducts();
                 });
 
-                // Upload buttons
-                document.getElementById('uploadBtn')?.addEventListener('click', () => this.openUploadModal());
-                document.getElementById('fabUpload').addEventListener('click', () => this.openUploadModal());
+                // Category tabs functionality
+                document.querySelectorAll('.category-tab').forEach(tab => {
+                    tab.addEventListener('click', (e) => {
+                        const category = e.target.closest('.category-tab').dataset.category;
+                        this.createRipple(e);
+                        this.setActiveCategory(category);
+                    });
+                });
 
-                // Sync button
-                document.getElementById('syncBtn')?.addEventListener('click', () => this.syncData());
+                // Bottom navigation functionality
+                document.querySelectorAll('.nav-item').forEach(navItem => {
+                    navItem.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const tab = e.target.closest('.nav-item').dataset.tab;
+                        this.switchTab(tab);
+                    });
+                });
+
+                // Upload buttons (FAB is hidden but keep for potential future use)
+                document.getElementById('fabUpload')?.addEventListener('click', () => this.openUploadModal());
 
                 // Modal close buttons
                 document.getElementById('closeModal').addEventListener('click', () => this.closeProductModal());
@@ -799,11 +1888,33 @@
                     if (e.target.id === 'uploadModal') this.closeUploadModal();
                 });
 
+                // Send to Sales functionality
+                document.getElementById('sendToSalesBtn')?.addEventListener('click', () => this.openSendToSalesModal());
+                document.getElementById('closeSendToSalesModal')?.addEventListener('click', () => this.closeSendToSalesModal());
+                document.getElementById('closePreviewModal')?.addEventListener('click', () => this.closePreviewModal());
+                
+                // Sharing options
+                document.getElementById('exportExcelBtn')?.addEventListener('click', () => this.exportToExcel());
+                document.getElementById('copyToClipboardBtn')?.addEventListener('click', () => this.copyToClipboard());
+                document.getElementById('previewBtn')?.addEventListener('click', () => this.showPreview());
+                document.getElementById('previewCopyBtn')?.addEventListener('click', () => this.copyToClipboard());
+                document.getElementById('previewExportBtn')?.addEventListener('click', () => this.exportToExcel());
+
+                // Close modals on backdrop click
+                document.getElementById('sendToSalesModal')?.addEventListener('click', (e) => {
+                    if (e.target.id === 'sendToSalesModal') this.closeSendToSalesModal();
+                });
+                document.getElementById('previewModal')?.addEventListener('click', (e) => {
+                    if (e.target.id === 'previewModal') this.closePreviewModal();
+                });
+
                 // Keyboard shortcuts
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'Escape') {
                         this.closeProductModal();
                         this.closeUploadModal();
+                        this.closeSendToSalesModal();
+                        this.closePreviewModal();
                     }
                 });
             }
@@ -882,37 +1993,510 @@
                 }, 500); // Simulate loading delay
             }
 
+            createRipple(event) {
+                const button = event.currentTarget;
+                const rect = button.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = event.clientX - rect.left - size / 2;
+                const y = event.clientY - rect.top - size / 2;
+
+                const ripple = document.createElement('span');
+                ripple.className = 'ripple';
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+
+                button.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            }
+
+            setActiveCategory(category) {
+                // Update current category
+                this.currentCategory = category;
+
+                // Update active tab visual state
+                document.querySelectorAll('.category-tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                document.querySelector(`[data-category="${category}"]`).classList.add('active');
+
+                // Save to localStorage
+                localStorage.setItem('selectedCategory', category);
+
+                // Filter products
+                this.filterProducts();
+            }
+
             filterProducts() {
                 this.filteredProducts = this.products.filter(product => {
-                    return product.name.toLowerCase().includes(this.searchTerm) ||
-                           (product.sku && product.sku.toLowerCase().includes(this.searchTerm)) ||
-                           product.category.toLowerCase().includes(this.searchTerm);
+                    // Category filter
+                    const categoryMatch = this.currentCategory === 'all' ||
+                                        product.category === this.currentCategory;
+
+                    // Search filter
+                    const searchMatch = !this.searchTerm ||
+                                      product.name.toLowerCase().includes(this.searchTerm) ||
+                                      (product.sku && product.sku.toLowerCase().includes(this.searchTerm)) ||
+                                      product.category.toLowerCase().includes(this.searchTerm);
+
+                    return categoryMatch && searchMatch;
                 });
 
                 this.renderProducts();
             }
 
+            switchTab(tab) {
+                // Update current tab
+                this.currentTab = tab;
+
+                // Update active nav item
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+
+                // Handle tab functionality
+                switch(tab) {
+                    case 'home':
+                        this.showHomePage();
+                        break;
+                    case 'search':
+                        this.focusSearch();
+                        break;
+                    case 'saved':
+                        this.showSavedProducts();
+                        break;
+                }
+            }
+
+            showHomePage() {
+                this.hideStatsPage(() => {
+                    document.querySelector('main').style.display = 'block';
+                    // Hide Send to Sales button on home page
+                    document.getElementById('sendToSalesSection').classList.add('hidden');
+                    this.currentCategory = 'all';
+                    this.setActiveCategory('all');
+                    // Reset to show all products
+                    this.filterProducts();
+                });
+            }
+
+            focusSearch() {
+                this.hideStatsPage(() => {
+                    document.querySelector('main').style.display = 'block';
+                    // Hide Send to Sales button on search page
+                    document.getElementById('sendToSalesSection').classList.add('hidden');
+                    setTimeout(() => {
+                        document.getElementById('searchInput').focus();
+                    }, 100);
+                });
+            }
+
+            showSavedProducts() {
+                this.hideStatsPage(() => {
+                    document.querySelector('main').style.display = 'block';
+
+                    // Filter to show only saved products
+                    this.filteredProducts = this.products.filter(product =>
+                        this.savedProducts.has(product.sku)
+                    );
+
+                    // Show/hide Send to Sales button
+                    const sendToSalesSection = document.getElementById('sendToSalesSection');
+                    const savedCountSpan = document.getElementById('savedCount');
+                    
+                    if (this.filteredProducts.length > 0) {
+                        sendToSalesSection.classList.remove('hidden');
+                        savedCountSpan.textContent = this.filteredProducts.length;
+                    } else {
+                        sendToSalesSection.classList.add('hidden');
+                    }
+
+                    // Clear current display
+                    const container = document.getElementById('masonryGrid');
+                    container.innerHTML = '';
+
+                    // Show saved products or empty state
+                    if (this.filteredProducts.length === 0) {
+                        this.showEmptySavedState();
+                    } else {
+                        this.renderProducts();
+                    }
+                });
+            }
+
+            showEmptySavedState() {
+                const container = document.getElementById('masonryGrid');
+                container.innerHTML = `
+                    <div class="empty-saved-state">
+                        <div class="empty-icon">
+                            <i class="far fa-heart"></i>
+                        </div>
+                        <h3>Chưa có sản phẩm đã lưu</h3>
+                        <p>Nhấn vào biểu tượng trái tim trên sản phẩm để lưu chúng vào đây</p>
+                        <button class="back-to-home-btn" onclick="window.app.switchTab('home')">
+                            <i class="fas fa-home mr-2"></i>Về trang chủ
+                        </button>
+                    </div>
+                `;
+            }
+
+            hideStatsPage(callback) {
+                // Stats page is hidden, just execute callback immediately
+                callback();
+            }
+
+            toggleSaveProduct(sku) {
+                if (this.savedProducts.has(sku)) {
+                    this.savedProducts.delete(sku);
+                } else {
+                    this.savedProducts.add(sku);
+                }
+
+                // Save to localStorage
+                localStorage.setItem('savedProducts', JSON.stringify([...this.savedProducts]));
+
+                // Update UI if we're on saved products tab
+                if (this.currentTab === 'saved') {
+                    this.showSavedProducts();
+                }
+
+                // Update heart icon
+                this.updateHeartIcon(sku);
+
+                // Update Send to Sales button count if visible
+                this.updateSendToSalesButton();
+            }
+
+            updateSendToSalesButton() {
+                const savedCountSpan = document.getElementById('savedCount');
+                const sendToSalesSection = document.getElementById('sendToSalesSection');
+                
+                if (savedCountSpan && this.currentTab === 'saved') {
+                    const savedCount = this.savedProducts.size;
+                    savedCountSpan.textContent = savedCount;
+                    
+                    if (savedCount > 0) {
+                        sendToSalesSection.classList.remove('hidden');
+                    } else {
+                        sendToSalesSection.classList.add('hidden');
+                    }
+                }
+            }
+
+            updateHeartIcon(sku) {
+                const heartButton = document.querySelector(`[data-sku="${sku}"] .pin-btn.save`);
+                if (heartButton) {
+                    const isSaved = this.savedProducts.has(sku);
+
+                    if (isSaved) {
+                        heartButton.classList.add('saved');
+                        heartButton.innerHTML = '<i class="fas fa-heart mr-1"></i>Đã lưu';
+                    } else {
+                        heartButton.classList.remove('saved');
+                        heartButton.innerHTML = '<i class="far fa-heart mr-1"></i>Lưu';
+                    }
+                }
+            }
+
+            updateStatistics() {
+                // Total products
+                document.getElementById('totalProducts').textContent = this.products.length;
+
+                // Total value
+                const totalValue = this.products.reduce((sum, product) => {
+                    return sum + (product.price || 0) * (product.quantity || 0);
+                }, 0);
+                document.getElementById('totalValue').textContent = totalValue.toLocaleString('vi-VN');
+
+                // Saved products count
+                document.getElementById('savedProducts').textContent = this.savedProducts.size;
+
+                // Category distribution
+                this.updateCategoryChart();
+
+                // Low stock alert
+                this.updateLowStockList();
+
+                // Popular products
+                this.updatePopularProducts();
+            }
+
+            updateCategoryChart() {
+                const categoryCount = {};
+                this.products.forEach(product => {
+                    categoryCount[product.category] = (categoryCount[product.category] || 0) + 1;
+                });
+
+                const colors = ['#e60023', '#0084ff', '#00d084', '#ffba00', '#8e44ad'];
+                const chartContainer = document.getElementById('categoryChart');
+                chartContainer.innerHTML = '';
+
+                Object.entries(categoryCount).forEach(([category, count], index) => {
+                    const item = document.createElement('div');
+                    item.className = 'category-item';
+                    item.innerHTML = `
+                        <div class="category-color" style="background: ${colors[index % colors.length]}"></div>
+                        <span>${category}: ${count}</span>
+                    `;
+                    chartContainer.appendChild(item);
+                });
+            }
+
+            updateLowStockList() {
+                const lowStockProducts = this.products
+                    .filter(product => (product.quantity || 0) < 5)
+                    .sort((a, b) => (a.quantity || 0) - (b.quantity || 0))
+                    .slice(0, 5);
+
+                const container = document.getElementById('lowStockList');
+                container.innerHTML = '';
+
+                if (lowStockProducts.length === 0) {
+                    container.innerHTML = '<p class="text-gray-500">Không có sản phẩm nào có tồn kho thấp</p>';
+                    return;
+                }
+
+                lowStockProducts.forEach(product => {
+                    const item = document.createElement('div');
+                    item.className = 'low-stock-item';
+                    item.innerHTML = `
+                        <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/40x40?text=No+Image'">
+                        <div class="low-stock-info">
+                            <div class="low-stock-name">${product.name}</div>
+                            <div class="low-stock-quantity">Còn lại: ${product.quantity || 0}</div>
+                        </div>
+                    `;
+                    container.appendChild(item);
+                });
+            }
+
+            updatePopularProducts() {
+                const savedProductsList = this.products
+                    .filter(product => this.savedProducts.has(product.sku))
+                    .slice(0, 6);
+
+                const container = document.getElementById('popularProducts');
+                container.innerHTML = '';
+
+                if (savedProductsList.length === 0) {
+                    container.innerHTML = '<p class="text-gray-500">Chưa có sản phẩm nào được lưu</p>';
+                    return;
+                }
+
+                savedProductsList.forEach(product => {
+                    const item = document.createElement('div');
+                    item.className = 'popular-item';
+                    item.innerHTML = `
+                        <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/50x50?text=No+Image'">
+                        <div class="popular-info">
+                            <div class="popular-name">${product.name}</div>
+                            <div class="popular-saves">❤️ Đã lưu</div>
+                        </div>
+                    `;
+                    container.appendChild(item);
+                });
+            }
+
             showProductModal(product) {
                 const modal = document.getElementById('productModal');
 
-                // Populate modal content
-                document.getElementById('modalImage').src = product.image;
+                // Get product images
+                const images = this.getProductImages(product);
+                this.currentModalImages = images;
+                this.currentModalImageIndex = 0;
+
+                // Populate basic product info
                 document.getElementById('modalTitle').textContent = product.name;
                 document.getElementById('modalCategory').textContent = product.category;
                 document.getElementById('modalSku').textContent = `SKU: ${product.sku}`;
-                document.getElementById('modalStock').textContent = product.stock;
+                document.getElementById('modalStock').textContent = product.stock || product.quantity || 0;
                 document.getElementById('modalPrice').textContent = product.price ? `${product.price.toLocaleString()}đ` : 'N/A';
                 document.getElementById('modalDescription').textContent = product.description || 'Không có mô tả';
 
-                // Setup modal buttons
-                document.getElementById('modalEditBtn').onclick = () => {
-                    this.closeProductModal();
-                    this.openUploadModal(product.sku);
+                // Setup image gallery
+                this.setupModalImageGallery(images);
+
+                // Setup modal save button
+                const modalSaveBtn = document.getElementById('modalSaveBtn');
+                const isSaved = this.savedProducts.has(product.sku);
+                modalSaveBtn.className = `bg-white bg-opacity-90 hover:bg-opacity-100 text-gray-800 px-3 py-1.5 rounded-full text-sm font-medium transition-all shadow ${isSaved ? 'saved' : ''}`;
+                modalSaveBtn.innerHTML = `<i class="fas fa-heart mr-1"></i>${isSaved ? 'Đã lưu' : 'Lưu'}`;
+                modalSaveBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    this.toggleSaveProduct(product.sku);
+                    // Update button state
+                    const newSavedState = this.savedProducts.has(product.sku);
+                    modalSaveBtn.className = `bg-white bg-opacity-90 hover:bg-opacity-100 text-gray-800 px-3 py-1.5 rounded-full text-sm font-medium transition-all shadow ${newSavedState ? 'saved' : ''}`;
+                    modalSaveBtn.innerHTML = `<i class="fas fa-heart mr-1"></i>${newSavedState ? 'Đã lưu' : 'Lưu'}`;
                 };
 
                 // Show modal
                 modal.classList.remove('hidden');
                 document.body.style.overflow = 'hidden';
+            }
+
+            setupModalImageGallery(images) {
+                const slider = document.getElementById('modalImageSlider');
+                const thumbnails = document.getElementById('modalThumbnails');
+                const counter = document.getElementById('modalImageCounter');
+                const prevBtn = document.getElementById('modalPrevBtn');
+                const nextBtn = document.getElementById('modalNextBtn');
+
+                // Clear existing content
+                slider.innerHTML = '';
+                thumbnails.innerHTML = '';
+
+                // Create image slides
+                images.forEach((imageSrc, index) => {
+                    // Main image slide
+                    const slide = document.createElement('div');
+                    slide.className = 'flex-shrink-0 w-full h-full relative bg-gray-50';
+                    slide.innerHTML = `
+                        <img src="${imageSrc}" 
+                             alt="Product image ${index + 1}"
+                             class="w-full h-full object-contain bg-white"
+                             style="object-fit: contain; object-position: center;"
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/800x600?text=No+Image'">
+                    `;
+                    slider.appendChild(slide);
+
+                    // Compact Thumbnail
+                    const thumbnail = document.createElement('div');
+                    thumbnail.className = `flex-shrink-0 w-12 h-12 md:w-14 md:h-14 rounded overflow-hidden cursor-pointer border-2 transition-all ${index === 0 ? 'border-red-500 opacity-100' : 'border-gray-300 opacity-70 hover:opacity-100 hover:border-gray-400'}`;
+                    thumbnail.innerHTML = `
+                        <img src="${imageSrc}" 
+                             alt="Thumbnail ${index + 1}"
+                             class="w-full h-full object-cover"
+                             loading="lazy"
+                             onerror="this.src='https://via.placeholder.com/48x48?text=${index + 1}'">
+                    `;
+                    thumbnail.onclick = () => this.goToModalImage(index);
+                    thumbnails.appendChild(thumbnail);
+                });
+
+                // Update counter
+                counter.textContent = `1 / ${images.length}`;
+
+                // Show/hide navigation based on image count
+                const hasMultipleImages = images.length > 1;
+                prevBtn.style.display = hasMultipleImages ? 'flex' : 'none';
+                nextBtn.style.display = hasMultipleImages ? 'flex' : 'none';
+                thumbnails.style.display = hasMultipleImages ? 'flex' : 'none';
+
+                // Setup navigation event listeners
+                prevBtn.onclick = () => this.prevModalImage();
+                nextBtn.onclick = () => this.nextModalImage();
+
+                // Reset slider position
+                slider.style.transform = 'translateX(0%)';
+                this.currentModalImageIndex = 0;
+
+                // Setup touch/swipe for mobile
+                this.setupModalSwipeGestures(slider);
+            }
+
+            prevModalImage() {
+                const newIndex = this.currentModalImageIndex > 0 
+                    ? this.currentModalImageIndex - 1 
+                    : this.currentModalImages.length - 1;
+                this.goToModalImage(newIndex);
+            }
+
+            nextModalImage() {
+                const newIndex = this.currentModalImageIndex < this.currentModalImages.length - 1
+                    ? this.currentModalImageIndex + 1
+                    : 0;
+                this.goToModalImage(newIndex);
+            }
+
+            goToModalImage(index) {
+                const slider = document.getElementById('modalImageSlider');
+                const thumbnails = document.getElementById('modalThumbnails');
+                const counter = document.getElementById('modalImageCounter');
+
+                // Update slider position
+                slider.style.transform = `translateX(-${index * 100}%)`;
+                this.currentModalImageIndex = index;
+
+                // Update counter
+                counter.textContent = `${index + 1} / ${this.currentModalImages.length}`;
+
+                // Update thumbnail states
+                thumbnails.querySelectorAll('div').forEach((thumb, i) => {
+                    if (i === index) {
+                        thumb.className = thumb.className.replace(/border-(red-500|gray-300|gray-400)/, 'border-red-500');
+                        thumb.className = thumb.className.replace(/opacity-(70|100)/, 'opacity-100');
+                    } else {
+                        thumb.className = thumb.className.replace(/border-(red-500|gray-300|gray-400)/, 'border-gray-300');
+                        thumb.className = thumb.className.replace(/opacity-(70|100)/, 'opacity-70');
+                    }
+                });
+            }
+
+            setupModalSwipeGestures(slider) {
+                let startX = 0;
+                let currentX = 0;
+                let isDragging = false;
+
+                const handleStart = (e) => {
+                    isDragging = true;
+                    startX = e.type === 'mousedown' ? e.clientX : e.touches[0].clientX;
+                    slider.style.transition = 'none';
+                };
+
+                const handleMove = (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                    
+                    currentX = e.type === 'mousemove' ? e.clientX : e.touches[0].clientX;
+                    const diffX = currentX - startX;
+                    const threshold = 50;
+
+                    // Show visual feedback
+                    const currentTransform = this.currentModalImageIndex * -100;
+                    const dragPercent = (diffX / slider.offsetWidth) * 100;
+                    slider.style.transform = `translateX(${currentTransform + dragPercent}%)`;
+                };
+
+                const handleEnd = (e) => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    
+                    slider.style.transition = 'transform 0.3s ease-in-out';
+                    
+                    const diffX = currentX - startX;
+                    const threshold = 50;
+
+                    if (Math.abs(diffX) > threshold) {
+                        if (diffX > 0) {
+                            this.prevModalImage();
+                        } else {
+                            this.nextModalImage();
+                        }
+                    } else {
+                        // Snap back to current image
+                        this.goToModalImage(this.currentModalImageIndex);
+                    }
+                };
+
+                // Touch events
+                slider.addEventListener('touchstart', handleStart, { passive: false });
+                slider.addEventListener('touchmove', handleMove, { passive: false });
+                slider.addEventListener('touchend', handleEnd, { passive: true });
+
+                // Mouse events for desktop
+                slider.addEventListener('mousedown', handleStart);
+                slider.addEventListener('mousemove', handleMove);
+                slider.addEventListener('mouseup', handleEnd);
+                slider.addEventListener('mouseleave', handleEnd);
+
+                // Prevent context menu on long press
+                slider.addEventListener('contextmenu', (e) => e.preventDefault());
             }
 
             closeProductModal() {
@@ -933,9 +2517,8 @@
 
             closeUploadModal() {
                 document.getElementById('uploadModal').classList.add('hidden');
-                document.getElementById('imageFile').value = '';
+                this.clearImagePreviews();
                 document.getElementById('productSelect').value = '';
-                document.getElementById('imagePreview').classList.add('hidden');
                 document.body.style.overflow = 'auto';
             }
 
@@ -954,36 +2537,76 @@
                 });
             }
 
-            saveProduct(sku) {
-                // TODO: Implement save/favorite functionality
-                this.showNotification(`Đã lưu sản phẩm ${sku}`, 'success');
-            }
+
 
             handleImagePreview(event) {
-                const file = event.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        document.getElementById('previewImg').src = e.target.result;
-                        document.getElementById('imagePreview').classList.remove('hidden');
-                    };
-                    reader.readAsDataURL(file);
+                const files = Array.from(event.target.files);
+                const previewContainer = document.getElementById('previewContainer');
+                const imagePreview = document.getElementById('imagePreview');
+                
+                if (files.length > 0) {
+                    previewContainer.innerHTML = '';
+                    
+                    files.forEach((file, index) => {
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            const previewItem = document.createElement('div');
+                            previewItem.className = 'relative';
+                            previewItem.innerHTML = `
+                                <img src="${e.target.result}" 
+                                     class="w-full h-24 object-cover rounded-lg border-2 border-gray-200">
+                                <button onclick="window.app.removeImagePreview(${index})" 
+                                        class="absolute top-1 right-1 bg-red-500 hover:bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                                <div class="absolute bottom-1 left-1 bg-black bg-opacity-60 text-white text-xs px-2 py-1 rounded">
+                                    ${index + 1}
+                                </div>
+                            `;
+                            previewContainer.appendChild(previewItem);
+                        };
+                        reader.readAsDataURL(file);
+                    });
+                    
+                    imagePreview.classList.remove('hidden');
                 } else {
-                    document.getElementById('imagePreview').classList.add('hidden');
+                    imagePreview.classList.add('hidden');
                 }
+            }
+
+            clearImagePreviews() {
+                document.getElementById('imageFile').value = '';
+                document.getElementById('imagePreview').classList.add('hidden');
+                document.getElementById('previewContainer').innerHTML = '';
+            }
+
+            removeImagePreview(index) {
+                const fileInput = document.getElementById('imageFile');
+                const files = Array.from(fileInput.files);
+                
+                // Remove file at index
+                files.splice(index, 1);
+                
+                // Create new FileList (workaround since FileList is read-only)
+                const dt = new DataTransfer();
+                files.forEach(file => dt.items.add(file));
+                fileInput.files = dt.files;
+                
+                // Refresh preview
+                this.handleImagePreview({ target: fileInput });
             }
 
             async handleUpload() {
                 const sku = document.getElementById('productSelect').value;
                 const fileInput = document.getElementById('imageFile');
-                const file = fileInput.files[0];
+                const files = Array.from(fileInput.files);
 
                 if (!sku) {
                     this.showNotification('Vui lòng chọn sản phẩm', 'error');
                     return;
                 }
 
-                if (!file) {
+                if (files.length === 0) {
                     this.showNotification('Vui lòng chọn hình ảnh', 'error');
                     return;
                 }
@@ -993,52 +2616,42 @@
                 uploadBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Đang upload...';
 
                 try {
-                    if (this.supabaseManager && this.supabaseManager.supabase) {
-                        // Upload to Supabase Storage
-                        const fileName = `${sku}.${file.name.split('.').pop()}`;
+                    // Use new Flask API
+                    const formData = new FormData();
+                    formData.append('sku', sku);
+                    
+                    files.forEach((file, index) => {
+                        formData.append('files', file);
+                    });
 
-                        // Remove old file first
-                        try {
-                            await this.supabaseManager.supabase.storage.from('product-images').remove([fileName]);
-                        } catch (e) {
-                            // Ignore if file doesn't exist
-                        }
+                    const response = await fetch('/api/upload', {
+                        method: 'POST',
+                        body: formData
+                    });
 
-                        // Upload new file
-                        const { data, error } = await this.supabaseManager.supabase.storage
-                            .from('product-images')
-                            .upload(fileName, file, {
-                                contentType: file.type
-                            });
+                    const result = await response.json();
 
-                        if (error) throw error;
-
-                        // Get public URL
-                        const { data: urlData } = this.supabaseManager.supabase.storage
-                            .from('product-images')
-                            .getPublicUrl(fileName);
-
-                        // Update product in database
-                        const { error: updateError } = await this.supabaseManager.supabase
-                            .from('products')
-                            .update({ image: urlData.publicUrl })
-                            .eq('sku', sku);
-
-                        if (updateError) throw updateError;
-
-                        // Update local data
-                        const productIndex = this.products.findIndex(p => p.sku === sku);
-                        if (productIndex !== -1) {
-                            this.products[productIndex].image = urlData.publicUrl;
-                        }
-
-                        this.showNotification('Upload thành công!', 'success');
-                        this.closeUploadModal();
-                        this.filterProducts(); // Refresh display
-
-                    } else {
-                        throw new Error('Supabase không khả dụng');
+                    if (!response.ok) {
+                        throw new Error(result.error || 'Upload failed');
                     }
+
+                    // Update local data
+                    const productIndex = this.products.findIndex(p => p.sku === sku);
+                    if (productIndex !== -1) {
+                        if (result.images.length === 1) {
+                            this.products[productIndex].image = result.images[0];
+                            if (this.products[productIndex].images) {
+                                delete this.products[productIndex].images;
+                            }
+                        } else {
+                            this.products[productIndex].images = result.images;
+                            this.products[productIndex].image = result.primary_image;
+                        }
+                    }
+
+                    this.showNotification(result.message, 'success');
+                    this.closeUploadModal();
+                    this.filterProducts(); // Refresh display
 
                 } catch (error) {
                     console.error('Upload error:', error);
@@ -1062,9 +2675,215 @@
                 document.getElementById('loadingIndicator').classList.toggle('hidden', !show);
             }
 
+            // Multiple Images Helper Functions
+            getProductImages(product) {
+                // Support both old single image format and new multiple images
+                if (product.images && Array.isArray(product.images)) {
+                    return product.images.filter(img => img && img.trim() !== '');
+                } else if (product.image && product.image.trim() !== '') {
+                    return [product.image];
+                } else {
+                    return ['https://via.placeholder.com/300x400?text=No+Image'];
+                }
+            }
+
+            prevImage(button) {
+                const container = button.closest('.pin-image-container');
+                const slider = container.querySelector('.pin-image-slider');
+                const current = parseInt(slider.dataset.current);
+                const totalImages = container.querySelectorAll('.pin-image-slide').length;
+                
+                const newIndex = current > 0 ? current - 1 : totalImages - 1;
+                this.updateImageSlider(container, newIndex);
+            }
+
+            nextImage(button) {
+                const container = button.closest('.pin-image-container');
+                const slider = container.querySelector('.pin-image-slider');
+                const current = parseInt(slider.dataset.current);
+                const totalImages = container.querySelectorAll('.pin-image-slide').length;
+                
+                const newIndex = current < totalImages - 1 ? current + 1 : 0;
+                this.updateImageSlider(container, newIndex);
+            }
+
+            goToImage(dot, index) {
+                const container = dot.closest('.pin-image-container');
+                this.updateImageSlider(container, index);
+            }
+
+            updateImageSlider(container, index) {
+                const slider = container.querySelector('.pin-image-slider');
+                const dots = container.querySelectorAll('.pin-dot');
+                
+                // Update slider position
+                slider.style.transform = `translateX(-${index * 100}%)`;
+                slider.dataset.current = index;
+                
+                // Update dots
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+            }
+
+            // Send to Sales Modal Functions
+            openSendToSalesModal() {
+                const modal = document.getElementById('sendToSalesModal');
+                const modalSavedCount = document.getElementById('modalSavedCount');
+                
+                const savedProducts = this.products.filter(product => this.savedProducts.has(product.sku));
+                modalSavedCount.textContent = `${savedProducts.length} sản phẩm`;
+                
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+
+            closeSendToSalesModal() {
+                document.getElementById('sendToSalesModal').classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+
+            closePreviewModal() {
+                document.getElementById('previewModal').classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+
+            getSavedProductsData() {
+                return this.products.filter(product => this.savedProducts.has(product.sku)).map(product => ({
+                    name: product.name || 'N/A',
+                    sku: product.sku || 'N/A',
+                    category: product.category || 'N/A',
+                    stock: product.stock || product.quantity || 0,
+                    price: product.price || 0,
+                    image: product.image || (product.images && product.images[0]) || 'N/A'
+                }));
+            }
+
+            formatTextForSharing(products) {
+                const header = `📋 DANH SÁCH SẢN PHẨM CHO SALE\n${'='.repeat(40)}\n`;
+                const footer = `\n${'='.repeat(40)}\n📞 Liên hệ ngay để đặt hàng!\n⏰ ${new Date().toLocaleString('vi-VN')}`;
+                
+                const productList = products.map((product, index) => {
+                    return `${index + 1}. ${product.name}\n` +
+                           `   📦 SKU: ${product.sku}\n` +
+                           `   🏷️ Loại: ${product.category}\n` +
+                           `   📊 Tồn kho: ${product.stock}\n` +
+                           `   💰 Giá: ${product.price ? product.price.toLocaleString('vi-VN') + 'đ' : 'Liên hệ'}\n`;
+                }).join('\n');
+
+                return header + productList + footer;
+            }
+
+            async copyToClipboard() {
+                try {
+                    this.showLoading(true);
+                    const products = this.getSavedProductsData();
+                    const formattedText = this.formatTextForSharing(products);
+                    
+                    await navigator.clipboard.writeText(formattedText);
+                    this.showNotification('✅ Đã sao chép vào clipboard!', 'success');
+                    this.closeSendToSalesModal();
+                    this.closePreviewModal();
+                } catch (error) {
+                    this.showNotification('❌ Lỗi sao chép: ' + error.message, 'error');
+                } finally {
+                    this.showLoading(false);
+                }
+            }
+
+            async exportToExcel() {
+                try {
+                    this.showLoading(true);
+                    const products = this.getSavedProductsData();
+                    
+                    // Create CSV content (Excel compatible)
+                    const headers = ['STT', 'Tên sản phẩm', 'SKU', 'Danh mục', 'Tồn kho', 'Giá (VNĐ)', 'Link ảnh'];
+                    const csvRows = [headers.join(',')];
+                    
+                    products.forEach((product, index) => {
+                        const row = [
+                            index + 1,
+                            `"${product.name.replace(/"/g, '""')}"`,
+                            product.sku,
+                            `"${product.category}"`,
+                            product.stock,
+                            product.price,
+                            product.image !== 'N/A' ? product.image : ''
+                        ];
+                        csvRows.push(row.join(','));
+                    });
+                    
+                    // Add BOM for UTF-8 encoding (Excel compatibility)
+                    const csvContent = '\ufeff' + csvRows.join('\n');
+                    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                    
+                    // Download file
+                    const link = document.createElement('a');
+                    const url = URL.createObjectURL(blob);
+                    link.setAttribute('href', url);
+                    link.setAttribute('download', `BinhToi_SanPham_${new Date().toISOString().split('T')[0]}.csv`);
+                    link.style.visibility = 'hidden';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    this.showNotification('📊 Đã xuất file Excel thành công!', 'success');
+                    this.closeSendToSalesModal();
+                    this.closePreviewModal();
+                } catch (error) {
+                    this.showNotification('❌ Lỗi xuất Excel: ' + error.message, 'error');
+                } finally {
+                    this.showLoading(false);
+                }
+            }
+
+            showPreview() {
+                const products = this.getSavedProductsData();
+                const formattedText = this.formatTextForSharing(products);
+                
+                // Show preview modal
+                const previewModal = document.getElementById('previewModal');
+                const previewContent = document.getElementById('previewContent');
+                
+                previewContent.innerHTML = `
+                    <div class="bg-gray-50 p-4 rounded-lg border">
+                        <h4 class="font-semibold mb-3 text-gray-800">Nội dung sẽ được chia sẻ:</h4>
+                        <pre class="whitespace-pre-wrap text-sm text-gray-700 font-mono leading-relaxed">${formattedText}</pre>
+                    </div>
+                    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        ${products.map(product => `
+                            <div class="border rounded-lg p-3 bg-white">
+                                <div class="flex items-center gap-3">
+                                    ${product.image !== 'N/A' ? 
+                                        `<img src="${product.image}" alt="${product.name}" class="w-12 h-12 object-cover rounded">` :
+                                        `<div class="w-12 h-12 bg-gray-200 rounded flex items-center justify-center"><i class="fas fa-image text-gray-400"></i></div>`
+                                    }
+                                    <div class="flex-1">
+                                        <h5 class="font-medium text-sm">${product.name}</h5>
+                                        <p class="text-xs text-gray-500">${product.sku} • ${product.category}</p>
+                                        <p class="text-xs text-blue-600">Tồn: ${product.stock} • ${product.price ? product.price.toLocaleString('vi-VN') + 'đ' : 'Liên hệ'}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                
+                previewModal.classList.remove('hidden');
+                this.closeSendToSalesModal();
+                document.body.style.overflow = 'hidden';
+            }
+
+            showLoading(show) {
+                const loadingElement = document.getElementById('sendToSalesLoading');
+                if (loadingElement) {
+                    loadingElement.classList.toggle('hidden', !show);
+                }
+            }
+
             showNotification(message, type = 'success') {
                 const notification = document.createElement('div');
-                notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 ${
+                notification.className = `fixed top-4 right-4 z-[99999] p-4 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 ${
                     type === 'success' ? 'bg-green-500 text-white' :
                     type === 'error' ? 'bg-red-500 text-white' :
                     'bg-blue-500 text-white'
@@ -1087,7 +2906,9 @@
                 setTimeout(() => {
                     notification.style.transform = 'translateX(100%)';
                     setTimeout(() => {
-                        document.body.removeChild(notification);
+                        if (document.body.contains(notification)) {
+                            document.body.removeChild(notification);
+                        }
                     }, 300);
                 }, 3000);
             }
