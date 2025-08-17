@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Bình decor Amiri, hồng bóng nhỏ",
-    "category": "Bình để nến",
+    "category": "Bình Decor",
     "stock": 37,
     "price": 0,
     "description": "Mã: 25631630",
@@ -16,7 +16,7 @@
   {
     "id": 2,
     "name": "Bình decor Amiri, hồng mờ nhỏ",
-    "category": "Bình để nến",
+    "category": "Bình Decor",
     "stock": 98,
     "price": 0,
     "description": "Mã: 25631647",
@@ -26,7 +26,7 @@
   {
     "id": 3,
     "name": "Bình decor Amiri, xanh biển bóng nhỏ",
-    "category": "Bình để nến",
+    "category": "Bình Decor",
     "stock": 43,
     "price": 0,
     "description": "Mã: 25631654",
@@ -40,7 +40,7 @@
   {
     "id": 4,
     "name": "Bình decor Amiri, xanh mờ nhỏ",
-    "category": "Bình để nến",
+    "category": "Bình Decor",
     "stock": 91,
     "price": 0,
     "description": "Mã: 25631661",
@@ -54,7 +54,7 @@
   {
     "id": 5,
     "name": "Bình decor Amiri, Xanh lá cây bóng",
-    "category": "Bình để nến",
+    "category": "Bình Decor",
     "stock": 100,
     "price": 0,
     "description": "Mã: 25631678",
@@ -68,7 +68,7 @@
   {
     "id": 6,
     "name": "Bình decor Amiri, xám mờ nhỏ",
-    "category": "Bình để nến",
+    "category": "Bình Decor",
     "stock": 104,
     "price": 0,
     "description": "Mã: 25631685",
@@ -78,7 +78,7 @@
   {
     "id": 7,
     "name": "Bình decor Amiri, đen mờ nhỏ",
-    "category": "Bình để nến",
+    "category": "Bình Decor",
     "stock": 64,
     "price": 0,
     "description": "Mã: 25631692",
@@ -92,7 +92,7 @@
   {
     "id": 8,
     "name": "Bình decor Amiri, trắng bóng nhỏ",
-    "category": "Bình để nến",
+    "category": "Bình Decor",
     "stock": 95,
     "price": 0,
     "description": "Mã: 25631708",
@@ -102,7 +102,7 @@
   {
     "id": 9,
     "name": "Bình decor Amiri, trắng mờ nhỏ",
-    "category": "Bình để nến",
+    "category": "Bình Decor",
     "stock": 94,
     "price": 0,
     "description": "Mã: 25631715",
