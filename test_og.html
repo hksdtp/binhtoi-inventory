@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Open Graph - Kho Bình Cốc Tồn</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .preview {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            background: #f9f9f9;
+        }
+        .og-preview {
+            border: 1px solid #e1e8ed;
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 500px;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .og-image {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .og-content {
+            padding: 16px;
+        }
+        .og-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 4px;
+        }
+        .og-description {
+            font-size: 14px;
+            color: #86868b;
+            margin-bottom: 8px;
+        }
+        .og-url {
+            font-size: 12px;
+            color: #86868b;
+            text-transform: uppercase;
+        }
+        .test-links {
+            margin: 30px 0;
+        }
+        .test-links a {
+            display: inline-block;
+            margin: 10px 10px 10px 0;
+            padding: 10px 20px;
+            background: #007AFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .test-links a:hover {
+            background: #0056CC;
+        }
+        .code {
+            background: #f5f5f7;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Open Graph Metadata</h1>
+    <p>Kiểm tra cách hiển thị link khi chia sẻ trên các platform khác nhau.</p>
+    
+    <div class="preview">
+        <h2>📱 Preview khi chia sẻ link</h2>
+        <div class="og-preview">
+            <div class="og-image">
+                🏺 Kho Bình Cốc Tồn
+            </div>
+            <div class="og-content">
+                <div class="og-title">Kho Bình Cốc Tồn</div>
+                <div class="og-url">binhcocton.vercel.app</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-links">
+        <h2>🔗 Test trên các platform</h2>
+        <a href="https://developers.facebook.com/tools/debug/" target="_blank">Facebook Debugger</a>
+        <a href="https://cards-dev.twitter.com/validator" target="_blank">Twitter Card Validator</a>
+        <a href="https://www.linkedin.com/post-inspector/" target="_blank">LinkedIn Post Inspector</a>
+        <a href="https://developers.google.com/search/docs/appearance/structured-data" target="_blank">Google Rich Results</a>
+    </div>
+    
+    <div class="preview">
+        <h2>📋 Meta tags hiện tại</h2>
+        <div class="code">
+&lt;title&gt;Kho Bình Cốc Tồn&lt;/title&gt;
+
+&lt;!-- Open Graph / Facebook --&gt;
+&lt;meta property="og:type" content="website"&gt;
+&lt;meta property="og:url" content="https://binhcocton.vercel.app"&gt;
+&lt;meta property="og:title" content="Kho Bình Cốc Tồn"&gt;
+&lt;meta property="og:image" content="https://binhcocton.vercel.app/images/og-image.svg"&gt;
+&lt;meta property="og:image:width" content="1200"&gt;
+&lt;meta property="og:image:height" content="630"&gt;
+&lt;meta property="og:image:type" content="image/svg+xml"&gt;
+&lt;meta property="og:site_name" content="Kho Bình Cốc Tồn"&gt;
+
+&lt;!-- Twitter --&gt;
+&lt;meta property="twitter:card" content="summary_large_image"&gt;
+&lt;meta property="twitter:url" content="https://binhcocton.vercel.app"&gt;
+&lt;meta property="twitter:title" content="Kho Bình Cốc Tồn"&gt;
+&lt;meta property="twitter:image" content="https://binhcocton.vercel.app/images/og-image.svg"&gt;
+        </div>
+    </div>
+    
+    <div class="preview">
+        <h2>✅ Checklist</h2>
+        <ul>
+            <li>✅ Title: "Kho Bình Cốc Tồn"</li>
+            <li>✅ Description: Để trống (theo yêu cầu)</li>
+            <li>✅ Image: SVG 1200x630px</li>
+            <li>✅ URL: binhcocton.vercel.app</li>
+            <li>✅ Favicon: 🏺 emoji</li>
+            <li>✅ Meta tags đầy đủ cho Facebook, Twitter</li>
+        </ul>
+    </div>
+    
+    <div class="preview">
+        <h2>🚀 Cách test</h2>
+        <ol>
+            <li>Deploy website lên Vercel hoặc server public</li>
+            <li>Copy URL và paste vào Facebook Debugger</li>
+            <li>Click "Debug" để xem preview</li>
+            <li>Nếu cần update, click "Scrape Again"</li>
+            <li>Test trên Twitter Card Validator tương tự</li>
+        </ol>
+    </div>
+    
+    <p><a href="index.html">← Quay lại trang chính</a></p>
+</body>
+</html>
