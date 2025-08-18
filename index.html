@@ -62,7 +62,7 @@
         
         /* Pinterest Masonry Grid */
         .masonry-container {
-            margin-top: 80px; /* Reduced since category tabs are hidden */
+            margin-top: 120px;
             padding: 16px 4px;
         }
         
@@ -971,7 +971,7 @@
             }
 
             .masonry-container {
-                margin-top: 70px; /* Reduced since category tabs are hidden */
+                margin-top: 110px;
                 padding-bottom: 80px; /* Space for mobile nav */
             }
 
@@ -1252,19 +1252,13 @@
             <i class="fas fa-search search-icon"></i>
         </div>
 
-        <!-- Category Tabs (Hidden - No longer needed) -->
-        <div class="category-tabs-container hidden">
+        <!-- Category Tabs -->
+        <div class="category-tabs-container">
             <button class="category-tab active" data-category="all">
                 <span>🏠 Tất cả</span>
             </button>
             <button class="category-tab" data-category="Bình Decor">
                 <span>🕯️ Bình Decor</span>
-            </button>
-            <button class="category-tab" data-category="Bình xông đốt tinh dầu">
-                <span>🌸 Bình Đốt Tinh Dầu</span>
-            </button>
-            <button class="category-tab" data-category="Cốc nến thơm">
-                <span>☕ Cốc Sứ Deco</span>
             </button>
         </div>
     </div>
@@ -1728,7 +1722,9 @@
                     // Fallback to local JSON
                     if (this.products.length === 0) {
                         const response = await fetch('products_data.json');
-                        this.products = await response.json();
+                        const allProducts = await response.json();
+                        // Filter out hidden products
+                        this.products = allProducts.filter(product => !product.hidden);
                         console.log('✅ Loaded from local JSON:', this.products.length, 'products');
                     }
 
