@@ -348,11 +348,11 @@
   {
     "id": 28,
     "name": "Cốc sứ Deco JA657",
-    "category": "Cốc nến thơm",
-    "hidden": true,
+    "category": "Cốc Sứ Decor",
     "stock": 81,
-    "price": 0,
+    "price": 90000,
     "description": "Mã: 8935261208563",
+    "size": "Size S: 12 x 14(cao) cm",
     "image": "/images/8935261208563_1.jpg",
     "sku": "8935261208563",
     "images": [
@@ -363,11 +363,11 @@
   {
     "id": 29,
     "name": "Cốc sứ Deco JA655",
-    "category": "Cốc nến thơm",
-    "hidden": true,
+    "category": "Cốc Sứ Decor",
     "stock": 81,
-    "price": 0,
+    "price": 150000,
     "description": "Mã: 8935261208570",
+    "size": "Size M: 14 x 16(cao) cm",
     "image": "/images/8935261208570_1.jpg",
     "sku": "8935261208570",
     "images": [
@@ -378,11 +378,11 @@
   {
     "id": 30,
     "name": "Cốc sứ Deco JA656",
-    "category": "Cốc nến thơm",
-    "hidden": true,
+    "category": "Cốc Sứ Decor",
     "stock": 78,
-    "price": 0,
+    "price": 90000,
     "description": "Mã: 8935261208587",
+    "size": "Size S: 12 x 14(cao) cm",
     "image": "/images/8935261208587_1.jpg",
     "sku": "8935261208587",
     "images": [
@@ -394,11 +394,11 @@
   {
     "id": 31,
     "name": "Cốc sứ Deco JA654",
-    "category": "Cốc nến thơm",
-    "hidden": true,
+    "category": "Cốc Sứ Decor",
     "stock": 81,
-    "price": 0,
+    "price": 150000,
     "description": "Mã: 8935261208594",
+    "size": "Size M: 14 x 16(cao) cm",
     "image": "/images/8935261208594_1.jpg",
     "sku": "8935261208594",
     "images": [
@@ -409,11 +409,11 @@
   {
     "id": 32,
     "name": "Cốc sứ Deco JA028",
-    "category": "Cốc nến thơm",
-    "hidden": true,
+    "category": "Cốc Sứ Decor",
     "stock": 130,
-    "price": 0,
+    "price": 90000,
     "description": "Mã: 8935261208600",
+    "size": "Size S: 12 x 14(cao) cm",
     "image": "/images/8935261208600.jpg",
     "sku": "8935261208600"
   }

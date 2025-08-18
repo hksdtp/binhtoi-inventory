@@ -1260,6 +1260,9 @@
             <button class="category-tab" data-category="Bình Decor">
                 <span>🕯️ Bình Decor</span>
             </button>
+            <button class="category-tab" data-category="Cốc Sứ Decor">
+                <span>☕ Cốc Sứ Decor</span>
+            </button>
         </div>
     </div>
 
@@ -1442,6 +1445,9 @@
                     </div>
                 </div>
 
+                <!-- Size Information -->
+                <div id="modalSize" class="hidden text-blue-600 text-sm font-medium bg-blue-50 p-2 rounded text-center border border-blue-200"></div>
+                
                 <!-- Description (Compact) -->
                 <div id="modalDescription" class="text-gray-600 text-sm bg-gray-50 p-2 rounded text-center"></div>
             </div>
@@ -2337,6 +2343,15 @@
                 document.getElementById('modalStock').textContent = product.stock || product.quantity || 0;
                 document.getElementById('modalPrice').textContent = product.price ? `${product.price.toLocaleString()}đ` : 'N/A';
                 document.getElementById('modalDescription').textContent = product.description || 'Không có mô tả';
+                
+                // Show size information if available
+                const modalSize = document.getElementById('modalSize');
+                if (product.size) {
+                    modalSize.textContent = product.size;
+                    modalSize.classList.remove('hidden');
+                } else {
+                    modalSize.classList.add('hidden');
+                }
 
                 // Setup image gallery
                 this.setupModalImageGallery(images);
@@ -2776,6 +2791,7 @@
                     category: product.category || 'N/A',
                     stock: product.stock || product.quantity || 0,
                     price: product.price || 0,
+                    size: product.size || '',
                     image: product.image || (product.images && product.images[0]) || 'N/A'
                 }));
             }
@@ -2789,6 +2805,7 @@
                            `   📦 SKU: ${product.sku}\n` +
                            `   🏷️ Loại: ${product.category}\n` +
                            `   📊 Tồn kho: ${product.stock}\n` +
+                           `   📏 Kích thước: ${product.size || 'N/A'}\n` +
                            `   💰 Giá: ${product.price ? product.price.toLocaleString('vi-VN') + 'đ' : 'Liên hệ'}\n`;
                 }).join('\n');
 
@@ -2818,7 +2835,7 @@
                     const products = this.getSavedProductsData();
                     
                     // Create CSV content (Excel compatible)
-                    const headers = ['STT', 'Tên sản phẩm', 'SKU', 'Danh mục', 'Tồn kho', 'Giá (VNĐ)', 'Link ảnh'];
+                    const headers = ['STT', 'Tên sản phẩm', 'SKU', 'Danh mục', 'Kích thước', 'Tồn kho', 'Giá (VNĐ)', 'Link ảnh'];
                     const csvRows = [headers.join(',')];
                     
                     products.forEach((product, index) => {
@@ -2827,6 +2844,7 @@
                             `"${product.name.replace(/"/g, '""')}"`,
                             product.sku,
                             `"${product.category}"`,
+                            `"${product.size || 'N/A'}"`,
                             product.stock,
                             product.price,
                             product.image !== 'N/A' ? product.image : ''
@@ -2882,6 +2900,7 @@
                                     <div class="flex-1">
                                         <h5 class="font-medium text-sm">${product.name}</h5>
                                         <p class="text-xs text-gray-500">${product.sku} • ${product.category}</p>
+                                        ${product.size ? `<p class="text-xs text-purple-600">${product.size}</p>` : ''}
                                         <p class="text-xs text-blue-600">Tồn: ${product.stock} • ${product.price ? product.price.toLocaleString('vi-VN') + 'đ' : 'Liên hệ'}</p>
                                     </div>
                                 </div>
